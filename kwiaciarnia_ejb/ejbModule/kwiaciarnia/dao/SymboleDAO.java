@@ -38,7 +38,7 @@ public class SymboleDAO {
 	public List<Symbole> getFullList() {
 		List<Symbole> list = null;
 
-		Query query = em.createQuery("select s from symbole s");
+		Query query = em.createQuery("select s from Symbole s");
 
 		try {
 			list = query.getResultList();
@@ -54,7 +54,7 @@ public class SymboleDAO {
 
 		// 1. Build query string with parameters
 		String select = "select s ";
-		String from = "from symbole s ";
+		String from = "from Symbole s ";
 		String where = "";
 		String orderby = "order by s.symbol";
 

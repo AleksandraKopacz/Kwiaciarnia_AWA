@@ -38,7 +38,7 @@ public class UslugiDAO {
 	public List<Uslugi> getFullList() {
 		List<Uslugi> list = null;
 
-		Query query = em.createQuery("select u from uslugi u");
+		Query query = em.createQuery("select u from Uslugi u");
 
 		try {
 			list = query.getResultList();
@@ -54,7 +54,7 @@ public class UslugiDAO {
 
 		// 1. Build query string with parameters
 		String select = "select u ";
-		String from = "from uslugi u ";
+		String from = "from Uslugi u ";
 		String where = "";
 		String orderby = "order by u.usluga";
 

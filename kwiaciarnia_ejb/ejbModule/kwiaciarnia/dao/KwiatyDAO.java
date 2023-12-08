@@ -38,7 +38,7 @@ public class KwiatyDAO {
 	public List<Kwiaty> getFullList() {
 		List<Kwiaty> list = null;
 
-		Query query = em.createQuery("select k from kwiaty k");
+		Query query = em.createQuery("select k from Kwiaty k");
 
 		try {
 			list = query.getResultList();
@@ -54,7 +54,7 @@ public class KwiatyDAO {
 
 		// 1. Build query string with parameters
 		String select = "select k ";
-		String from = "from kwiaty k ";
+		String from = "from Kwiaty k ";
 		String where = "";
 		String orderby = "order by k.kwiat";
 
