@@ -38,7 +38,7 @@ public class UzytkownikDAO {
 	public List<Uzytkownik> getFullList() {
 		List<Uzytkownik> list = null;
 
-		Query query = em.createQuery("select uz from uzytkownik uz");
+		Query query = em.createQuery("select uz from Uzytkownik uz");
 
 		try {
 			list = query.getResultList();
@@ -54,7 +54,7 @@ public class UzytkownikDAO {
 
 		// 1. Build query string with parameters
 		String select = "select uz ";
-		String from = "from uzytkownik uz ";
+		String from = "from Uzytkownik uz ";
 		String where = "";
 		String orderby = "order by uz.id_uzytkownik";
 

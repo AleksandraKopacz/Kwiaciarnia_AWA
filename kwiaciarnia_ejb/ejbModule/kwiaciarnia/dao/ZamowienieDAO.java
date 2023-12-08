@@ -38,7 +38,7 @@ public class ZamowienieDAO {
 	public List<Zamowienie> getFullList() {
 		List<Zamowienie> list = null;
 
-		Query query = em.createQuery("select z from zamowienie z");
+		Query query = em.createQuery("select z from Zamowienie z");
 
 		try {
 			list = query.getResultList();
@@ -54,7 +54,7 @@ public class ZamowienieDAO {
 
 		// 1. Build query string with parameters
 		String select = "select z ";
-		String from = "from zamowienie z ";
+		String from = "from Zamowienie z ";
 		String where = "";
 		String orderby = "order by z.id_zamowienie";
 
