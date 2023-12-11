@@ -56,7 +56,7 @@ public class KwiatyDAO {
 		String select = "select k ";
 		String from = "from Kwiaty k ";
 		String where = "";
-		String orderby = "order by k.kwiat";
+		String orderby = "order by k.idKwiaty";
 
 		// search for surname
 		String kwiat = (String) searchParams.get("kwiat");
