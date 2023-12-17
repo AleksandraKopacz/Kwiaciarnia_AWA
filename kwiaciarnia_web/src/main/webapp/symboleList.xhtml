@@ -8,8 +8,7 @@
 
 <h:head>
 	<meta charset="utf-8" />
-	<title>JSF 06 - EJB, bazy danych (mapowanie
-		obiektowo-relacyjne)</title>
+	<title>Symbole</title>
 </h:head>
 <h:body style="background-color: #eee; margin: 0.5em;">
 
@@ -28,44 +27,23 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">
 
-		<p:commandButton value="Dodaj nową osobę"
-			action="#{kwiatyListBB.newKwiaty()}" style="margin-bottom:1em;" />
+		<p:commandButton value="Dodaj nowy rekord"
+			action="#{symboleListBB.newSymbole()}" style="margin-bottom:1em;" />
 
-		<p:dataTable value="#{kwiatyListBB.list}" var="k">
+		<p:dataTable value="#{symboleListBB.list}" var="s">
 		
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="idKwiaty" />
+					<h:outputText value="idSymbole" />
 				</f:facet>
-				<h:outputText value="#{k.idKwiaty}" />
+				<h:outputText value="#{s.idSymbole}" />
 			</p:column>
 
 			<p:column priority="5">
 				<f:facet name="header">
-					<h:outputText value="img" />
+					<h:outputText value="symbol" />
 				</f:facet>
-				<h:outputText value="#{k.img}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="kwiat" />
-				</f:facet>
-				<h:outputText value="#{k.kwiat}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="kolory" />
-				</f:facet>
-				<h:outputText value="#{k.kolory}" />
-			</p:column>
-			
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="cena" />
-				</f:facet>
-				<h:outputText value="#{k.cena}" />
+				<h:outputText value="#{s.symbol}" />
 			</p:column>
 
 			<p:column>
@@ -74,10 +52,10 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{kwiatyListBB.editKwiaty(k)}" />
+					action="#{symboleListBB.editSymbole(s)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{kwiatyListBB.deleteKwiaty(k)}" update="@form" />
+					action="#{symboleListBB.deleteSymbole(s)}" update="@form" />
 			</p:column>
 
 		</p:dataTable>

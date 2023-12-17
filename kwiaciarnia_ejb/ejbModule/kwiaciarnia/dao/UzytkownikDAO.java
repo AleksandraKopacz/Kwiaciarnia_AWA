@@ -56,17 +56,17 @@ public class UzytkownikDAO {
 		String select = "select uz ";
 		String from = "from Uzytkownik uz ";
 		String where = "";
-		String orderby = "order by uz.id_uzytkownik";
+		String orderby = "order by uz.idUzytkownik";
 
 		// search for surname
-		String id_uzytkownik = (String) searchParams.get("id_uzytkownik");
-		if (id_uzytkownik != null) {
+		String idUzytkownik = (String) searchParams.get("idUzytkownik");
+		if (idUzytkownik != null) {
 			if (where.isEmpty()) {
 				where = "where ";
 			} else {
 				where += "and ";
 			}
-			where += "uz.id_uzytkownik like :id_uzytkownik ";
+			where += "uz.idUzytkownik like :idUzytkownik ";
 		}
 		
 		// ... other parameters ... 
@@ -75,8 +75,8 @@ public class UzytkownikDAO {
 		Query query = em.createQuery(select + from + where + orderby);
 
 		// 3. Set configured parameters
-		if (id_uzytkownik != null) {
-			query.setParameter("id_uzytkownik", id_uzytkownik+"%");
+		if (idUzytkownik != null) {
+			query.setParameter("idUzytkownik", idUzytkownik+"%");
 		}
 
 		// ... other parameters ... 

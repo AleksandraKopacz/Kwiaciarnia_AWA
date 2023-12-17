@@ -12,22 +12,22 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.http.HttpSession;
 
-import kwiaciarnia.dao.KwiatyDAO;
-import kwiaciarnia.jpa.Kwiaty;
+import kwiaciarnia.dao.ZamowienieDAO;
+import kwiaciarnia.jpa.Zamowienie;
 
 @Named
 @ViewScoped
-public class KwiatyEditBB implements Serializable {
+public class ZamowienieEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_KWIATY_LIST = "kwiatyList?faces-redirect=true";
+	private static final String PAGE_ZAMOWIENIE_LIST = "zamowienieList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private Kwiaty kwiaty = new Kwiaty();
-	private Kwiaty loaded = null;
+	private Zamowienie zamowienie = new Zamowienie();
+	private Zamowienie loaded = null;
 
 	@EJB
-	KwiatyDAO kwiatyDAO;
+	ZamowienieDAO zamowienieDAO;
 
 	@Inject
 	FacesContext context;
@@ -35,8 +35,8 @@ public class KwiatyEditBB implements Serializable {
 	@Inject
 	Flash flash;
 
-	public Kwiaty getKwiaty() {
-		return kwiaty;
+	public Zamowienie getZamowienie() {
+		return zamowienie;
 	}
 
 	public void onLoad() throws IOException {
@@ -45,11 +45,11 @@ public class KwiatyEditBB implements Serializable {
 		// loaded = (Person) session.getAttribute("person");
 
 		// 2. load person passed through flash
-		loaded = (Kwiaty) flash.get("kwiaty");
+		loaded = (Zamowienie) flash.get("zamowienie");
 
 		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
-			kwiaty = loaded;
+			zamowienie = loaded;
 			// session.removeAttribute("person");
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
@@ -68,12 +68,12 @@ public class KwiatyEditBB implements Serializable {
 		}
 
 		try {
-			if (kwiaty.getIdKwiaty() == 0) {
+			if (zamowienie.getIdZamowienie() == 0) {
 				// new record
-				kwiatyDAO.create(kwiaty);
+				zamowienieDAO.create(zamowienie);
 			} else {
 				// existing record
-				kwiatyDAO.merge(kwiaty);
+				zamowienieDAO.merge(zamowienie);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,6 +82,6 @@ public class KwiatyEditBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
-		return PAGE_KWIATY_LIST;
+		return PAGE_ZAMOWIENIE_LIST;
 	}
 }

@@ -12,22 +12,22 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.http.HttpSession;
 
-import kwiaciarnia.dao.KwiatyDAO;
-import kwiaciarnia.jpa.Kwiaty;
+import kwiaciarnia.dao.UslugiDAO;
+import kwiaciarnia.jpa.Uslugi;
 
 @Named
 @ViewScoped
-public class KwiatyEditBB implements Serializable {
+public class UslugiEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_KWIATY_LIST = "kwiatyList?faces-redirect=true";
+	private static final String PAGE_USLUGI_LIST = "uslugiList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private Kwiaty kwiaty = new Kwiaty();
-	private Kwiaty loaded = null;
+	private Uslugi uslugi = new Uslugi();
+	private Uslugi loaded = null;
 
 	@EJB
-	KwiatyDAO kwiatyDAO;
+	UslugiDAO uslugiDAO;
 
 	@Inject
 	FacesContext context;
@@ -35,8 +35,8 @@ public class KwiatyEditBB implements Serializable {
 	@Inject
 	Flash flash;
 
-	public Kwiaty getKwiaty() {
-		return kwiaty;
+	public Uslugi getUslugi() {
+		return uslugi;
 	}
 
 	public void onLoad() throws IOException {
@@ -45,11 +45,11 @@ public class KwiatyEditBB implements Serializable {
 		// loaded = (Person) session.getAttribute("person");
 
 		// 2. load person passed through flash
-		loaded = (Kwiaty) flash.get("kwiaty");
+		loaded = (Uslugi) flash.get("uslugi");
 
 		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
-			kwiaty = loaded;
+			uslugi = loaded;
 			// session.removeAttribute("person");
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
@@ -68,12 +68,12 @@ public class KwiatyEditBB implements Serializable {
 		}
 
 		try {
-			if (kwiaty.getIdKwiaty() == 0) {
+			if (uslugi.getIdUslugi() == 0) {
 				// new record
-				kwiatyDAO.create(kwiaty);
+				uslugiDAO.create(uslugi);
 			} else {
 				// existing record
-				kwiatyDAO.merge(kwiaty);
+				uslugiDAO.merge(uslugi);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,6 +82,6 @@ public class KwiatyEditBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
-		return PAGE_KWIATY_LIST;
+		return PAGE_USLUGI_LIST;
 	}
 }

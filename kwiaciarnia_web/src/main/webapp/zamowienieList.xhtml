@@ -8,7 +8,7 @@
 
 <h:head>
 	<meta charset="utf-8" />
-	<title>Kwiaty</title>
+	<title>Zamowienie</title>
 </h:head>
 <h:body style="background-color: #eee; margin: 0.5em;">
 
@@ -28,43 +28,29 @@
 	<h:form id="form-table" style="margin-bottom:1em;">
 
 		<p:commandButton value="Dodaj nowy rekord"
-			action="#{kwiatyListBB.newKwiaty()}" style="margin-bottom:1em;" />
+			action="#{zamowienieListBB.newZamowienie()}" style="margin-bottom:1em;" />
 
-		<p:dataTable value="#{kwiatyListBB.list}" var="k">
+		<p:dataTable value="#{zamowienieListBB.list}" var="z">
 		
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="idKwiaty" />
+					<h:outputText value="idZamowienie" />
 				</f:facet>
-				<h:outputText value="#{k.idKwiaty}" />
+				<h:outputText value="#{z.idZamowienie}" />
 			</p:column>
 
 			<p:column priority="5">
 				<f:facet name="header">
-					<h:outputText value="img" />
+					<h:outputText value="szczegoly" />
 				</f:facet>
-				<h:outputText value="#{k.img}" />
+				<h:outputText value="#{z.szczegoly}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="kwiat" />
+					<h:outputText value="uzytkownik" />
 				</f:facet>
-				<h:outputText value="#{k.kwiat}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="kolory" />
-				</f:facet>
-				<h:outputText value="#{k.kolory}" />
-			</p:column>
-			
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="cena" />
-				</f:facet>
-				<h:outputText value="#{k.cena}" />
+				<h:outputText value="#{z.uzytkownik}" />
 			</p:column>
 
 			<p:column>
@@ -73,10 +59,10 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{kwiatyListBB.editKwiaty(k)}" />
+					action="#{zamowienieListBB.editZamowienie(z)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{kwiatyListBB.deleteKwiaty(k)}" update="@form" />
+					action="#{zamowienieListBB.deleteZamowienie(z)}" update="@form" />
 			</p:column>
 
 		</p:dataTable>

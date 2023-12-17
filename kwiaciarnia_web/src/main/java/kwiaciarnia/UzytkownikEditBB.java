@@ -12,22 +12,22 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.http.HttpSession;
 
-import kwiaciarnia.dao.KwiatyDAO;
-import kwiaciarnia.jpa.Kwiaty;
+import kwiaciarnia.dao.UzytkownikDAO;
+import kwiaciarnia.jpa.Uzytkownik;
 
 @Named
 @ViewScoped
-public class KwiatyEditBB implements Serializable {
+public class UzytkownikEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_KWIATY_LIST = "kwiatyList?faces-redirect=true";
+	private static final String PAGE_UZYTKOWNIK_LIST = "uzytkownikList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private Kwiaty kwiaty = new Kwiaty();
-	private Kwiaty loaded = null;
+	private Uzytkownik uzytkownik = new Uzytkownik();
+	private Uzytkownik loaded = null;
 
 	@EJB
-	KwiatyDAO kwiatyDAO;
+	UzytkownikDAO uzytkownikDAO;
 
 	@Inject
 	FacesContext context;
@@ -35,8 +35,8 @@ public class KwiatyEditBB implements Serializable {
 	@Inject
 	Flash flash;
 
-	public Kwiaty getKwiaty() {
-		return kwiaty;
+	public Uzytkownik getUzytkownik() {
+		return uzytkownik;
 	}
 
 	public void onLoad() throws IOException {
@@ -45,11 +45,11 @@ public class KwiatyEditBB implements Serializable {
 		// loaded = (Person) session.getAttribute("person");
 
 		// 2. load person passed through flash
-		loaded = (Kwiaty) flash.get("kwiaty");
+		loaded = (Uzytkownik) flash.get("uzytkownik");
 
 		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
-			kwiaty = loaded;
+			uzytkownik = loaded;
 			// session.removeAttribute("person");
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
@@ -68,12 +68,12 @@ public class KwiatyEditBB implements Serializable {
 		}
 
 		try {
-			if (kwiaty.getIdKwiaty() == 0) {
+			if (uzytkownik.getIdUzytkownik() == 0) {
 				// new record
-				kwiatyDAO.create(kwiaty);
+				uzytkownikDAO.create(uzytkownik);
 			} else {
 				// existing record
-				kwiatyDAO.merge(kwiaty);
+				uzytkownikDAO.merge(uzytkownik);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,6 +82,6 @@ public class KwiatyEditBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
-		return PAGE_KWIATY_LIST;
+		return PAGE_UZYTKOWNIK_LIST;
 	}
 }

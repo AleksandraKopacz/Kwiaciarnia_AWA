@@ -8,7 +8,7 @@
 
 <h:head>
 	<meta charset="utf-8" />
-	<title>Kwiaty</title>
+	<title>Uzytkownik</title>
 </h:head>
 <h:body style="background-color: #eee; margin: 0.5em;">
 
@@ -28,43 +28,36 @@
 	<h:form id="form-table" style="margin-bottom:1em;">
 
 		<p:commandButton value="Dodaj nowy rekord"
-			action="#{kwiatyListBB.newKwiaty()}" style="margin-bottom:1em;" />
+			action="#{uzytkownikListBB.newUzytkownik()}" style="margin-bottom:1em;" />
 
-		<p:dataTable value="#{kwiatyListBB.list}" var="k">
+		<p:dataTable value="#{uzytkownikListBB.list}" var="uz">
 		
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="idKwiaty" />
+					<h:outputText value="idUzytkownik" />
 				</f:facet>
-				<h:outputText value="#{k.idKwiaty}" />
+				<h:outputText value="#{uz.idUzytkownik}" />
 			</p:column>
 
 			<p:column priority="5">
 				<f:facet name="header">
-					<h:outputText value="img" />
+					<h:outputText value="email" />
 				</f:facet>
-				<h:outputText value="#{k.img}" />
+				<h:outputText value="#{uz.email}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="kwiat" />
+					<h:outputText value="haslo" />
 				</f:facet>
-				<h:outputText value="#{k.kwiat}" />
+				<h:outputText value="#{uz.haslo}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="kolory" />
+					<h:outputText value="rola" />
 				</f:facet>
-				<h:outputText value="#{k.kolory}" />
-			</p:column>
-			
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="cena" />
-				</f:facet>
-				<h:outputText value="#{k.cena}" />
+				<h:outputText value="#{uz.rola}" />
 			</p:column>
 
 			<p:column>
@@ -73,10 +66,10 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{kwiatyListBB.editKwiaty(k)}" />
+					action="#{uzytkownikListBB.editUzytkownik(uz)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{kwiatyListBB.deleteKwiaty(k)}" update="@form" />
+					action="#{uzytkownikListBB.deleteUzytkownik(uz)}" update="@form" />
 			</p:column>
 
 		</p:dataTable>

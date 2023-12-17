@@ -12,22 +12,22 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.http.HttpSession;
 
-import kwiaciarnia.dao.KwiatyDAO;
-import kwiaciarnia.jpa.Kwiaty;
+import kwiaciarnia.dao.SymboleDAO;
+import kwiaciarnia.jpa.Symbole;
 
 @Named
 @ViewScoped
-public class KwiatyEditBB implements Serializable {
+public class SymboleEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_KWIATY_LIST = "kwiatyList?faces-redirect=true";
+	private static final String PAGE_SYMBOLE_LIST = "symboleList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private Kwiaty kwiaty = new Kwiaty();
-	private Kwiaty loaded = null;
+	private Symbole symbole = new Symbole();
+	private Symbole loaded = null;
 
 	@EJB
-	KwiatyDAO kwiatyDAO;
+	SymboleDAO symboleDAO;
 
 	@Inject
 	FacesContext context;
@@ -35,8 +35,8 @@ public class KwiatyEditBB implements Serializable {
 	@Inject
 	Flash flash;
 
-	public Kwiaty getKwiaty() {
-		return kwiaty;
+	public Symbole getSymbole() {
+		return symbole;
 	}
 
 	public void onLoad() throws IOException {
@@ -45,11 +45,11 @@ public class KwiatyEditBB implements Serializable {
 		// loaded = (Person) session.getAttribute("person");
 
 		// 2. load person passed through flash
-		loaded = (Kwiaty) flash.get("kwiaty");
+		loaded = (Symbole) flash.get("symbole");
 
 		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
-			kwiaty = loaded;
+			symbole = loaded;
 			// session.removeAttribute("person");
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
@@ -68,12 +68,12 @@ public class KwiatyEditBB implements Serializable {
 		}
 
 		try {
-			if (kwiaty.getIdKwiaty() == 0) {
+			if (symbole.getIdSymbole() == 0) {
 				// new record
-				kwiatyDAO.create(kwiaty);
+				symboleDAO.create(symbole);
 			} else {
 				// existing record
-				kwiatyDAO.merge(kwiaty);
+				symboleDAO.merge(symbole);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,6 +82,6 @@ public class KwiatyEditBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 
-		return PAGE_KWIATY_LIST;
+		return PAGE_SYMBOLE_LIST;
 	}
 }

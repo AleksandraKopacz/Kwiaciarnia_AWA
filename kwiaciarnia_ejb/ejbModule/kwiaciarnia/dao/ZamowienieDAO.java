@@ -56,17 +56,17 @@ public class ZamowienieDAO {
 		String select = "select z ";
 		String from = "from Zamowienie z ";
 		String where = "";
-		String orderby = "order by z.id_zamowienie";
+		String orderby = "order by z.idZamowienie";
 
 		// search for surname
-		String id_zamowienie = (String) searchParams.get("id_zamowienie");
-		if (id_zamowienie != null) {
+		String idZamowienie = (String) searchParams.get("idZamowienie");
+		if (idZamowienie != null) {
 			if (where.isEmpty()) {
 				where = "where ";
 			} else {
 				where += "and ";
 			}
-			where += "z.id_zamowienie like :id_zamowienie ";
+			where += "z.idZamowienie like :idZamowienie ";
 		}
 		
 		// ... other parameters ... 
@@ -75,8 +75,8 @@ public class ZamowienieDAO {
 		Query query = em.createQuery(select + from + where + orderby);
 
 		// 3. Set configured parameters
-		if (id_zamowienie != null) {
-			query.setParameter("id_zamowienie", id_zamowienie+"%");
+		if (idZamowienie != null) {
+			query.setParameter("idZamowienie", idZamowienie+"%");
 		}
 
 		// ... other parameters ... 

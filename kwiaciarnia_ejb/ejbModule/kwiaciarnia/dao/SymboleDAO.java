@@ -56,7 +56,7 @@ public class SymboleDAO {
 		String select = "select s ";
 		String from = "from Symbole s ";
 		String where = "";
-		String orderby = "order by s.symbol";
+		String orderby = "order by s.idSymbole";
 
 		// search for surname
 		String symbol = (String) searchParams.get("symbol");

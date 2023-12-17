@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:p="http://primefaceu.org/ui"
+	xmlns:ui="http://xmlnu.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlnu.jcp.org/jsf/html"
+	xmlns:f="http://xmlnu.jcp.org/jsf/core">
 
 <h:head>
 	<meta charset="utf-8" />
-	<title>Kwiaty</title>
+	<title>Uslugi</title>
 </h:head>
 <h:body style="background-color: #eee; margin: 0.5em;">
 
@@ -28,43 +28,50 @@
 	<h:form id="form-table" style="margin-bottom:1em;">
 
 		<p:commandButton value="Dodaj nowy rekord"
-			action="#{kwiatyListBB.newKwiaty()}" style="margin-bottom:1em;" />
+			action="#{uslugiListBB.newUslugi()}" style="margin-bottom:1em;" />
 
-		<p:dataTable value="#{kwiatyListBB.list}" var="k">
+		<p:dataTable value="#{uslugiListBB.list}" var="u">
 		
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="idKwiaty" />
+					<h:outputText value="idUslugi" />
 				</f:facet>
-				<h:outputText value="#{k.idKwiaty}" />
+				<h:outputText value="#{u.idUslugi}" />
 			</p:column>
 
 			<p:column priority="5">
 				<f:facet name="header">
 					<h:outputText value="img" />
 				</f:facet>
-				<h:outputText value="#{k.img}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="kwiat" />
-				</f:facet>
-				<h:outputText value="#{k.kwiat}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="kolory" />
-				</f:facet>
-				<h:outputText value="#{k.kolory}" />
+				<h:outputText value="#{u.img}" />
 			</p:column>
 			
-			<p:column>
+			<p:column priority="5">
 				<f:facet name="header">
-					<h:outputText value="cena" />
+					<h:outputText value="usluga" />
 				</f:facet>
-				<h:outputText value="#{k.cena}" />
+				<h:outputText value="#{u.usluga}" />
+			</p:column>
+			
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="opis" />
+				</f:facet>
+				<h:outputText value="#{u.opis}" />
+			</p:column>
+			
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="cenaUslugi" />
+				</f:facet>
+				<h:outputText value="#{u.cenaUslugi}" />
+			</p:column>
+			
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="typ" />
+				</f:facet>
+				<h:outputText value="#{u.typ}" />
 			</p:column>
 
 			<p:column>
@@ -73,10 +80,10 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{kwiatyListBB.editKwiaty(k)}" />
+					action="#{uslugiListBB.editUslugi(u)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{kwiatyListBB.deleteKwiaty(k)}" update="@form" />
+					action="#{uslugiListBB.deleteUslugi(u)}" update="@form" />
 			</p:column>
 
 		</p:dataTable>
