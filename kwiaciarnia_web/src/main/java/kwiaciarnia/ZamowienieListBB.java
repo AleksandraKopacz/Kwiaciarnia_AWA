@@ -23,7 +23,7 @@ public class ZamowienieListBB {
 	private static final String PAGE_ZAMOWIENIE_EDIT = "zamowienieEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private String zam;
+	private String szczegoly;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -34,12 +34,12 @@ public class ZamowienieListBB {
 	@EJB
 	ZamowienieDAO zamowienieDAO;
 
-	public String getZam() {
-		return zam;
+	public String getSzczegoly() {
+		return szczegoly;
 	}
 
-	public void setZam(String zam) {
-		this.zam = zam;
+	public void setSzczegoly(String szczegoly) {
+		this.szczegoly = szczegoly;
 	}
 
 	public List<Zamowienie> getFullList(){
@@ -52,8 +52,8 @@ public class ZamowienieListBB {
 		//1. Prepare search params
 		Map<String,Object> searchParams = new HashMap<String, Object>();
 		
-		if (zam != null && zam.length() > 0){
-			searchParams.put("zam", zam);
+		if (szczegoly != null && szczegoly.length() > 0){
+			searchParams.put("szczegoly", szczegoly);
 		}
 		
 		//2. Get list

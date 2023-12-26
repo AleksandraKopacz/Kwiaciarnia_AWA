@@ -23,7 +23,7 @@ public class UzytkownikListBB {
 	private static final String PAGE_UZYTKOWNIK_EDIT = "uzytkownikEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
-	private String uzyt;
+	private String email;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -34,12 +34,12 @@ public class UzytkownikListBB {
 	@EJB
 	UzytkownikDAO uzytkownikDAO;
 
-	public String getUzyt() {
-		return uzyt;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUzyt(String uzyt) {
-		this.uzyt = uzyt;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public List<Uzytkownik> getFullList(){
@@ -52,8 +52,8 @@ public class UzytkownikListBB {
 		//1. Prepare search params
 		Map<String,Object> searchParams = new HashMap<String, Object>();
 		
-		if (uzyt != null && uzyt.length() > 0){
-			searchParams.put("uzyt", uzyt);
+		if (email != null && email.length() > 0){
+			searchParams.put("email", email);
 		}
 		
 		//2. Get list

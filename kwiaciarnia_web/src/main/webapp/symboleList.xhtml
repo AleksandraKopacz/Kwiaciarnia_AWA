@@ -12,16 +12,16 @@
 </h:head>
 <h:body style="background-color: #eee; margin: 0.5em;">
 
-	<!-- <p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="nazwisko:" />
-				<p:inputText value="#{personListBB.surname}" />
+				<h:outputLabel value="symbol:" />
+				<p:inputText value="#{symboleListBB.symbol}" />
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>
-	</p:panel> -->
+	</p:panel>
 
 	<p:messages />
 
@@ -30,7 +30,11 @@
 		<p:commandButton value="Dodaj nowy rekord"
 			action="#{symboleListBB.newSymbole()}" style="margin-bottom:1em;" />
 
-		<p:dataTable value="#{symboleListBB.list}" var="s">
+		<p:dataTable value="#{symboleListBB.list}" var="s" rows="5"
+                     paginator="true" paginatorPosition="both"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords} rekordów"
+                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}">
 		
 			<p:column>
 				<f:facet name="header">
