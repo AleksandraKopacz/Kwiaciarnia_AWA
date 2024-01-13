@@ -21,7 +21,7 @@ public class Symbole implements Serializable {
 	private String symbol;
 
 	//bi-directional many-to-many association to Kwiaty
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name="symbole_kwiaty"
 		, joinColumns={

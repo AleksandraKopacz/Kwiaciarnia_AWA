@@ -54,7 +54,9 @@
 				<f:facet name="header">
 					<h:outputText value="uzytkownik" />
 				</f:facet>
-				<h:outputText value="#{z.uzytkownik}" />
+				<ui:repeat value="#{z.uzytkownik}" var="uz">
+					<h:outputText value="#{uz.idUzytkownik}" />
+				</ui:repeat>
 			</p:column>
 
 			<p:column>

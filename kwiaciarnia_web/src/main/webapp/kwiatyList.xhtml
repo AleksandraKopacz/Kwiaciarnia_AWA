@@ -34,7 +34,8 @@
                      paginator="true" paginatorPosition="both"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords} rekordów"
-                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}">
+                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}" reflow="true"
+                     >
 		
 			<p:column>
 				<f:facet name="header">
@@ -43,7 +44,7 @@
 				<h:outputText value="#{k.idKwiaty}" />
 			</p:column>
 
-			<p:column priority="5">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="img" />
 				</f:facet>
@@ -64,7 +65,7 @@
 				<h:outputText value="#{k.kolory}" />
 			</p:column>
 			
-			<p:column>
+			<p:column sortOrder="asc">
 				<f:facet name="header">
 					<h:outputText value="cena" />
 				</f:facet>

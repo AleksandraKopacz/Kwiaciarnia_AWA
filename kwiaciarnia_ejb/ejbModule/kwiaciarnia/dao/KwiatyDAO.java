@@ -67,7 +67,7 @@ public class KwiatyDAO {
 				where += "and ";
 			}
 			where += "k.kwiat like :kwiat ";
-		}
+		}	
 		
 		// ... other parameters ... 
 

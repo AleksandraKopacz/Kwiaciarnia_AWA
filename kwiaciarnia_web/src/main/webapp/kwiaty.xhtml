@@ -16,7 +16,7 @@
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="kwiat:" />
+				<h:outputLabel value="Kwiat:" />
 				<p:inputText value="#{kwiatyListBB.kwiat}" />
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
@@ -27,7 +27,7 @@
 
 	<h:form id="form-table" style="margin-bottom:1em;">
 
-		<p:dataTable value="#{kwiatyListBB.list}" var="k" rows="5"
+		<p:dataTable value="#{kwiatyListBB.list}" var="k"
                      paginator="true" paginatorPosition="bottom"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords}"
@@ -49,8 +49,14 @@
 				<h:outputText value="#{k.cena} zł" />
 			</p:column>
 			
-
+			<p:column>			
+			 	<ui:repeat value="#{k.symboles}" var="s">
+			 		<h:outputText value="#{s.symbol}, " />
+				</ui:repeat>
+			</p:column>
+			
 		</p:dataTable>
+		
 	</h:form>
 
 </h:body>

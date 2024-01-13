@@ -28,7 +28,7 @@ public class Kwiaty implements Serializable {
 	private String kwiat;
 
 	//bi-directional many-to-many association to Symbole
-	@ManyToMany(mappedBy="kwiaties")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="kwiaties")
 	private List<Symbole> symboles;
 
 	public Kwiaty() {
