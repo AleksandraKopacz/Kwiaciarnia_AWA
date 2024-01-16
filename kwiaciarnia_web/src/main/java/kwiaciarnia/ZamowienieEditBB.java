@@ -20,7 +20,7 @@ import kwiaciarnia.jpa.Zamowienie;
 public class ZamowienieEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_ZAMOWIENIE_LIST = "zamowienieList?faces-redirect=true";
+	private static final String PAGE_ZAMOWIENIE_LIST = "/pages/admin/zamowienieList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Zamowienie zamowienie = new Zamowienie();

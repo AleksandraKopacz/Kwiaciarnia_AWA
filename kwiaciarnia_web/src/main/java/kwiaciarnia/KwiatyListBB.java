@@ -24,7 +24,7 @@ import kwiaciarnia.jpa.Kwiaty;
 @RequestScoped
 public class KwiatyListBB {
 
-	private static final String PAGE_KWIATY_EDIT = "kwiatyEdit?faces-redirect=true";
+	private static final String PAGE_KWIATY_EDIT = "/pages/admin/kwiatyEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String kwiat;

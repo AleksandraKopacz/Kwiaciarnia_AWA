@@ -20,7 +20,7 @@ import kwiaciarnia.jpa.Uzytkownik;
 @RequestScoped
 public class UzytkownikListBB {
 
-	private static final String PAGE_UZYTKOWNIK_EDIT = "uzytkownikEdit?faces-redirect=true";
+	private static final String PAGE_UZYTKOWNIK_EDIT = "/pages/admin/uzytkownikEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String email;

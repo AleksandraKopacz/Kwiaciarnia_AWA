@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Zamowienie</title>
+</h:head>
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+		style="margin-bottom: 1em;">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="szczegoly:" />
+				<p:inputText value="#{zamowienieListBB.szczegoly}" />
+				<p:commandButton value="Szukaj" update="form-table" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+
+	<p:messages />
+
+	<h:form id="form-table" style="margin-bottom:1em;">
+
+		<p:commandButton value="Dodaj nowy rekord"
+			action="#{zamowienieListBB.newZamowienie()}" style="margin-bottom:1em;" />
+
+		<p:dataTable value="#{zamowienieListBB.list}" var="z" rows="5"
+                     paginator="true" paginatorPosition="both"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords} rekordów"
+                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}">
+		
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="idZamowienie" />
+				</f:facet>
+				<h:outputText value="#{z.idZamowienie}" />
+			</p:column>
+
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="szczegoly" />
+				</f:facet>
+				<h:outputText value="#{z.szczegoly}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="uzytkownik" />
+				</f:facet>
+				<ui:repeat value="#{z.uzytkownik}" var="uz">
+					<h:outputText value="#{uz.idUzytkownik}" />
+				</ui:repeat>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="opcje" />
+				</f:facet>
+
+				<p:commandButton value="Edytuj"
+					action="#{zamowienieListBB.editZamowienie(z)}" />
+
+				<p:commandButton value="Usuń"
+					action="#{zamowienieListBB.deleteZamowienie(z)}" update="@form" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>

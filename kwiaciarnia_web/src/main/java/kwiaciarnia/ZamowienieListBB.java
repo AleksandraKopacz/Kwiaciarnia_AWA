@@ -22,7 +22,7 @@ public class ZamowienieListBB {
 	
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_ZAMOWIENIE_EDIT = "zamowienieEdit?faces-redirect=true";
+	private static final String PAGE_ZAMOWIENIE_EDIT = "/pages/admin/zamowienieEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String szczegoly;

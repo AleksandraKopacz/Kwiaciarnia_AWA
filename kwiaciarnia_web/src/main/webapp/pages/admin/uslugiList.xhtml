@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Uslugi</title>
+</h:head>
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+		style="margin-bottom: 1em;">
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="usluga:" />
+				<p:inputText value="#{uslugiListBB.usluga}" />
+				<p:commandButton value="Szukaj" update="form-table" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+
+	<p:messages />
+
+	<h:form id="form-table" style="margin-bottom:1em;">
+
+		<p:commandButton value="Dodaj nowy rekord"
+			action="#{uslugiListBB.newUslugi()}" style="margin-bottom:1em;" />
+
+		<p:dataTable value="#{uslugiListBB.list}" var="u" rows="5"
+                     paginator="true" paginatorPosition="both"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords} rekordów"
+                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}">
+		
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="idUslugi" />
+				</f:facet>
+				<h:outputText value="#{u.idUslugi}" />
+			</p:column>
+
+			<p:column priority="5">
+				<f:facet name="header">
+					<h:outputText value="img" />
+				</f:facet>
+				<h:outputText value="#{u.img}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="usluga" />
+				</f:facet>
+				<h:outputText value="#{u.usluga}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="opis" />
+				</f:facet>
+				<h:outputText value="#{u.opis}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="cenaUslugi" />
+				</f:facet>
+				<h:outputText value="#{u.cenaUslugi}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="typ" />
+				</f:facet>
+				<h:outputText value="#{u.typ}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="opcje" />
+				</f:facet>
+
+				<p:commandButton value="Edytuj"
+					action="#{uslugiListBB.editUslugi(u)}" />
+
+				<p:commandButton value="Usuń"
+					action="#{uslugiListBB.deleteUslugi(u)}" update="@form" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>

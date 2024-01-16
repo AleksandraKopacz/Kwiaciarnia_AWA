@@ -20,7 +20,7 @@ import kwiaciarnia.jpa.Uzytkownik;
 public class UzytkownikEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_UZYTKOWNIK_LIST = "uzytkownikList?faces-redirect=true";
+	private static final String PAGE_UZYTKOWNIK_LIST = "/pages/admin/uzytkownikList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Uzytkownik uzytkownik = new Uzytkownik();

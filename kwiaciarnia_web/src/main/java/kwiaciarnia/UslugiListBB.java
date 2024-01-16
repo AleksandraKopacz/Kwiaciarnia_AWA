@@ -20,7 +20,7 @@ import kwiaciarnia.jpa.Uslugi;
 @RequestScoped
 public class UslugiListBB {
 
-	private static final String PAGE_USLUGI_EDIT = "uslugiEdit?faces-redirect=true";
+	private static final String PAGE_USLUGI_EDIT = "/pages/admin/uslugiEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String usluga;

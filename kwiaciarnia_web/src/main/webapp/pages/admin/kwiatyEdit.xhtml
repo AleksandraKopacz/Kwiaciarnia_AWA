@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+    <f:viewAction action="#{kwiatyEditBB.onLoad()}" />
+</f:metadata>
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>Kwiaty - edycja</title>
+</h:head>
+
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel toggleable="true" header="Edycja rekordu">
+
+		<h:form rendered="#{kwiatyEditBB.kwiaty != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+				<h:outputLabel for="k-kwiat" value="kwiat:" />
+				<p:inputText id="k-kwiat" value="#{kwiatyEditBB.kwiaty.kwiat}"
+					required="true" requiredMessage="Podaj nazwę kwiatu">
+				</p:inputText>
+				<p:message for="k-kwiat" display="icon"/>
+
+				<h:outputLabel for="k-kolory" value="kolory:" />
+				<p:inputText id="k-kolory" value="#{kwiatyEditBB.kwiaty.kolory}"
+					required="true" requiredMessage="Podaj listę kolorów">
+				</p:inputText>
+				<p:message for="k-kolory" display="icon"/>
+
+				<h:outputLabel for="k-cena" value="cena:" />
+				<p:inputText id="k-cena" value="#{kwiatyEditBB.kwiaty.cena}"
+					required="true" requiredMessage="Podaj cenę">
+				</p:inputText>
+				<p:message for="k-cena" display="icon"/>
+				
+				<h:outputLabel for="k-img" value="img:" />
+				<p:inputText id="k-img" value="#{kwiatyEditBB.kwiaty.img}"
+					required="true" requiredMessage="Podaj nazwę pliku">
+				</p:inputText>
+				<p:message for="k-img" display="icon"/>
+				
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zapisz" action="#{kwiatyEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+
+			<p:button value="Anuluj" outcome="kwiatyList" />
+		</h:form>
+
+	</p:panel>
+
+</h:body>
+
+</html>

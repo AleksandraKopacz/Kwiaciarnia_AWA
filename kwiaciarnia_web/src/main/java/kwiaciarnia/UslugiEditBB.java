@@ -20,7 +20,7 @@ import kwiaciarnia.jpa.Uslugi;
 public class UslugiEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_USLUGI_LIST = "uslugiList?faces-redirect=true";
+	private static final String PAGE_USLUGI_LIST = "/pages/admin/uslugiList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Uslugi uslugi = new Uslugi();

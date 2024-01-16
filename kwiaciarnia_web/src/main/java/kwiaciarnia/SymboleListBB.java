@@ -20,7 +20,7 @@ import kwiaciarnia.jpa.Symbole;
 @RequestScoped
 public class SymboleListBB {
 
-	private static final String PAGE_SYMBOLE_EDIT = "symboleEdit?faces-redirect=true";
+	private static final String PAGE_SYMBOLE_EDIT = "/pages/admin/symboleEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String symbol;

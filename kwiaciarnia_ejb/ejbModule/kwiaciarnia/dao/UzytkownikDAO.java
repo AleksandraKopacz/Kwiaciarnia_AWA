@@ -1,5 +1,6 @@
 package kwiaciarnia.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -89,6 +90,46 @@ public class UzytkownikDAO {
 		}
 
 		return list;
+	}
+	
+	public Uzytkownik getUserFromDatabase(Map<String, Object> searchParams) {
+		Uzytkownik uzytkownik = null;
+		
+		String select = "select distinct uz ";
+		String from = "from Uzytkownik uz ";
+		String where = "where ";
+		
+		String email = (String) searchParams.get("email");
+		String haslo = (String) searchParams.get("haslo");
+		where += "uz.email = :email and uz.haslo = :haslo";
+		
+		Query query = em.createQuery(select + from + where);
+		
+		query.setParameter("email", email);
+		query.setParameter("haslo", haslo);
+		
+		try {
+			uzytkownik = (Uzytkownik) query.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return uzytkownik;
+	}
+
+	public List<String> getUserRolesFromDatabase(Uzytkownik uzytkownik) {
+		ArrayList<String> roles = new ArrayList<String>();
+		
+		int roleCheck = uzytkownik.getRola();
+		String whatRole = String.valueOf(roleCheck);
+		
+		if (whatRole.equals("1")) {
+			roles.add("1");
+		} else if(whatRole.equals("0")) {
+			roles.add("0");
+		}
+		
+		return roles;
 	}
 	
 }

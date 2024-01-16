@@ -20,7 +20,7 @@ import kwiaciarnia.jpa.Kwiaty;
 public class KwiatyEditBB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String PAGE_KWIATY_LIST = "kwiatyList?faces-redirect=true";
+	private static final String PAGE_KWIATY_LIST = "pages/admin/kwiatyList?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Kwiaty kwiaty = new Kwiaty();
