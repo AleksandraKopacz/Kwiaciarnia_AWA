@@ -32,8 +32,6 @@ public class KwiatyListBB {
 	private String kolory;
 	private String img;
 	private String sortuj;
-	private String cenaOd;
-	private String cenaDo;
 	private int idKwiaty;
 
 	@Inject
