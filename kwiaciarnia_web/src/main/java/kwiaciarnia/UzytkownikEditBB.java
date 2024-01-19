@@ -2,6 +2,9 @@ package kwiaciarnia;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import jakarta.ejb.EJB;
 import jakarta.faces.application.FacesMessage;
@@ -66,14 +69,27 @@ public class UzytkownikEditBB implements Serializable {
 		if (loaded == null) {
 			return PAGE_STAY_AT_THE_SAME;
 		}
-
+		
+		List<Uzytkownik> list = null;
+		Map<String,Object> searchParams = new HashMap<String, Object>();
+		searchParams.put("email", uzytkownik.getEmail());		
+		list = uzytkownikDAO.getList(searchParams);
+		
 		try {
 			if (uzytkownik.getIdUzytkownik() == 0) {
 				// new record
-				uzytkownikDAO.create(uzytkownik);
+				if(!list.isEmpty()) {
+					context.addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Użytkownik o takim adresie e-mail już istnieje", null));
+					return PAGE_STAY_AT_THE_SAME;
+				} else {
+					uzytkownikDAO.create(uzytkownik);
+					return PAGE_UZYTKOWNIK_LIST;
+				}
 			} else {
 				// existing record
 				uzytkownikDAO.merge(uzytkownik);
+				return PAGE_UZYTKOWNIK_LIST;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,7 +97,35 @@ public class UzytkownikEditBB implements Serializable {
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
 			return PAGE_STAY_AT_THE_SAME;
 		}
-
-		return PAGE_UZYTKOWNIK_LIST;
+	}
+	
+	public void registerOnLoad() {
+		Uzytkownik uzytkownik = new Uzytkownik();
+	}
+	
+	public String registerUzytkownik() {
+		
+		List<Uzytkownik> list = null;
+		Map<String,Object> searchParams = new HashMap<String, Object>();
+		searchParams.put("email", uzytkownik.getEmail());		
+		list = uzytkownikDAO.getList(searchParams);
+		
+		try {
+			if(!list.isEmpty()) {
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Użytkownik o takim adresie e-mail już istnieje", null));
+			} else {
+				uzytkownikDAO.create(uzytkownik);
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "Konto zostało utworzone, możesz teraz zalogować się", null));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
+			return PAGE_STAY_AT_THE_SAME;
+		}
+		return PAGE_STAY_AT_THE_SAME;
+		
 	}
 }

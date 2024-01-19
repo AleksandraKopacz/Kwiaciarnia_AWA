@@ -18,6 +18,14 @@
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="Kwiat:" />
 				<p:inputText value="#{kwiatyListBB.kwiat}" />
+				<h:outputLabel value="Kolor:" />
+				<p:inputText value="#{kwiatyListBB.kolory}" />
+				<p:outputLabel value="Sortuj:"/>
+                <p:selectOneMenu value="#{kwiatyListBB.sortuj}">
+                    <f:selectItem itemLabel="Sortuj" itemValue=""/>
+                    <f:selectItem itemLabel="Sortuj od najniższej ceny" itemValue="ASC"/>
+                    <f:selectItem itemLabel="Sortuj od najwyższej ceny" itemValue="DESC"/>
+                </p:selectOneMenu>
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>

@@ -69,6 +69,57 @@ public class UslugiDAO {
 			where += "u.usluga like :usluga ";
 		}
 		
+		String img = (String) searchParams.get("img");
+		if (img != null) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "u.img like :img ";
+		}
+		
+		String opis = (String) searchParams.get("opis");
+		if (opis != null) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "u.opis like :opis ";
+		}
+		
+		String typ = (String) searchParams.get("typ");
+		if (typ != null) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "u.typ like :typ ";
+		}
+		
+		int idUslugi = (int) searchParams.get("idUslugi");
+		if (idUslugi > 0) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "u.idUslugi like :idUslugi ";
+		}
+		
+		String sortuj = (String) searchParams.get("sortuj");
+		if (sortuj != null) {
+			if (sortuj.equals("ASC")) {
+				orderby = "order by u.cenaUslugi ASC";
+			} else if (sortuj.equals("DESC")) {
+				orderby = "order by u.cenaUslugi DESC";
+			} else {
+				orderby = "order by u.idUslugi";
+			}
+		}
+		
 		// ... other parameters ... 
 
 		// 2. Create query object
@@ -77,6 +128,22 @@ public class UslugiDAO {
 		// 3. Set configured parameters
 		if (usluga != null) {
 			query.setParameter("usluga", usluga+"%");
+		}
+		
+		if (img != null) {
+			query.setParameter("img", img+"%");
+		}
+		
+		if (opis != null) {
+			query.setParameter("opis", "%"+opis+"%");
+		}
+		
+		if (typ != null) {
+			query.setParameter("typ", typ+"%");
+		}
+		
+		if (idUslugi > 0) {
+			query.setParameter("idUslugi", idUslugi);
 		}
 
 		// ... other parameters ... 

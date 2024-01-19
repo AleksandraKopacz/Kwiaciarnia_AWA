@@ -24,6 +24,7 @@ public class SymboleListBB {
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String symbol;
+	private int idSymbole;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -42,6 +43,14 @@ public class SymboleListBB {
 		this.symbol = symbol;
 	}
 
+	public int getIdSymbole() {
+		return idSymbole;
+	}
+
+	public void setIdSymbole(int idSymbole) {
+		this.idSymbole = idSymbole;
+	}
+
 	public List<Symbole> getFullList(){
 		return symboleDAO.getFullList();
 	}
@@ -55,6 +64,8 @@ public class SymboleListBB {
 		if (symbol != null && symbol.length() > 0){
 			searchParams.put("symbol", symbol);
 		}
+		
+		searchParams.put("idSymbole", idSymbole);
 		
 		//2. Get list
 		list = symboleDAO.getList(searchParams);

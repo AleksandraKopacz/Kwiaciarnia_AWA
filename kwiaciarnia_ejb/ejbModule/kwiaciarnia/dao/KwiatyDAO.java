@@ -67,7 +67,48 @@ public class KwiatyDAO {
 				where += "and ";
 			}
 			where += "k.kwiat like :kwiat ";
-		}	
+		}
+		
+		String img = (String) searchParams.get("img");
+		if (img != null) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "k.img like :img ";
+		}
+		
+		String kolory = (String) searchParams.get("kolory");
+		if (kolory != null) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "k.kolory like :kolory ";
+		}
+		
+		int idKwiaty = (int) searchParams.get("idKwiaty");
+		if (idKwiaty > 0) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "k.idKwiaty like :idKwiaty ";
+		}
+		
+		String sortuj = (String) searchParams.get("sortuj");
+		if (sortuj != null) {
+			if (sortuj.equals("ASC")) {
+				orderby = "order by k.cena ASC";
+			} else if (sortuj.equals("DESC")) {
+				orderby = "order by k.cena DESC";
+			} else {
+				orderby = "order by k.idKwiaty";
+			}
+		}
 		
 		// ... other parameters ... 
 
@@ -78,7 +119,19 @@ public class KwiatyDAO {
 		if (kwiat != null) {
 			query.setParameter("kwiat", kwiat+"%");
 		}
-
+		
+		if (img != null) {
+			query.setParameter("img", img+"%");
+		}
+		
+		if (kolory != null) {
+			query.setParameter("kolory", "%"+kolory+"%");
+		}
+		
+		if (idKwiaty > 0) {
+			query.setParameter("idKwiaty", idKwiaty);
+		}
+		
 		// ... other parameters ... 
 
 		// 4. Execute query and retrieve list of Person objects

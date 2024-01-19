@@ -23,7 +23,12 @@ public class UslugiListBB {
 	private static final String PAGE_USLUGI_EDIT = "/pages/admin/uslugiEdit?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
+	private int idUslugi;
 	private String usluga;
+	private String img;
+	private String opis;
+	private String typ;
+	private String sortuj;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -34,12 +39,52 @@ public class UslugiListBB {
 	@EJB
 	UslugiDAO uslugiDAO;
 
+	public int getIdUslugi() {
+		return idUslugi;
+	}
+
+	public void setIdUslugi(int idUslugi) {
+		this.idUslugi = idUslugi;
+	}
+
 	public String getUsluga() {
 		return usluga;
 	}
 
 	public void setUsluga(String usluga) {
 		this.usluga = usluga;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
+	}
+
+	public String getTyp() {
+		return typ;
+	}
+
+	public void setTyp(String typ) {
+		this.typ = typ;
+	}
+
+	public String getSortuj() {
+		return sortuj;
+	}
+
+	public void setSortuj(String sortuj) {
+		this.sortuj = sortuj;
 	}
 
 	public List<Uslugi> getFullList(){
@@ -55,6 +100,24 @@ public class UslugiListBB {
 		if (usluga != null && usluga.length() > 0){
 			searchParams.put("usluga", usluga);
 		}
+		
+		if (img != null && img.length() > 0){
+			searchParams.put("img", img);
+		}
+		
+		if (opis != null && opis.length() > 0){
+			searchParams.put("opis", opis);
+		}
+		
+		if (typ != null){
+			searchParams.put("typ", typ);
+		}
+		
+		if (sortuj != null){
+			searchParams.put("sortuj", sortuj);
+		}
+		
+		searchParams.put("idUslugi", idUslugi);
 		
 		//2. Get list
 		list = uslugiDAO.getList(searchParams);

@@ -16,8 +16,20 @@
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="usluga:" />
+				<h:outputLabel value="Usługa:" />
 				<p:inputText value="#{uslugiListBB.usluga}" />
+				<h:outputLabel value="Typ:" />
+				<p:selectOneMenu value="#{uslugiListBB.typ}">
+                    <f:selectItem itemLabel="Wszystko" itemValue=""/>
+                    <f:selectItem itemLabel="Box" itemValue="Box"/>
+                    <f:selectItem itemLabel="Bukiet" itemValue="Bukiet"/>
+                </p:selectOneMenu>
+                <h:outputLabel value="Sortuj:" />
+				<p:selectOneMenu value="#{uslugiListBB.sortuj}">
+                    <f:selectItem itemLabel="Sortuj" itemValue=""/>
+                    <f:selectItem itemLabel="Sortuj od najniższej ceny" itemValue="ASC"/>
+                    <f:selectItem itemLabel="Sortuj od najwyższej ceny" itemValue="DESC"/>
+                </p:selectOneMenu>
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>

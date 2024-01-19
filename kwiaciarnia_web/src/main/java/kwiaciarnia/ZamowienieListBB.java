@@ -26,6 +26,7 @@ public class ZamowienieListBB {
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String szczegoly;
+	private int idZamowienie;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -44,6 +45,14 @@ public class ZamowienieListBB {
 		this.szczegoly = szczegoly;
 	}
 
+	public int getIdZamowienie() {
+		return idZamowienie;
+	}
+
+	public void setIdZamowienie(int idZamowienie) {
+		this.idZamowienie = idZamowienie;
+	}
+
 	public List<Zamowienie> getFullList(){
 		return zamowienieDAO.getFullList();
 	}
@@ -57,6 +66,8 @@ public class ZamowienieListBB {
 		if (szczegoly != null && szczegoly.length() > 0){
 			searchParams.put("szczegoly", szczegoly);
 		}
+		
+		searchParams.put("idZamowienie", idZamowienie);
 		
 		//2. Get list
 		list = zamowienieDAO.getList(searchParams);

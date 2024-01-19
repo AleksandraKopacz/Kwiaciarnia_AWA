@@ -16,6 +16,8 @@
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="idZamowienie:" />
+				<p:inputText value="#{zamowienieListBB.idZamowienie}" placeholder="0" />
 				<h:outputLabel value="szczegoly:" />
 				<p:inputText value="#{zamowienieListBB.szczegoly}" />
 				<p:commandButton value="Szukaj" update="form-table" />

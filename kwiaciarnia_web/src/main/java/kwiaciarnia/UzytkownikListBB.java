@@ -24,6 +24,7 @@ public class UzytkownikListBB {
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String email;
+	private byte rola;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -42,6 +43,14 @@ public class UzytkownikListBB {
 		this.email = email;
 	}
 
+	public byte getRola() {
+		return rola;
+	}
+
+	public void setRola(byte rola) {
+		this.rola = rola;
+	}
+
 	public List<Uzytkownik> getFullList(){
 		return uzytkownikDAO.getFullList();
 	}
@@ -55,6 +64,8 @@ public class UzytkownikListBB {
 		if (email != null && email.length() > 0){
 			searchParams.put("email", email);
 		}
+		
+		searchParams.put("rola", rola);
 		
 		//2. Get list
 		list = uzytkownikDAO.getList(searchParams);

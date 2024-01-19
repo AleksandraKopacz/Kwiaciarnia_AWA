@@ -69,6 +69,16 @@ public class SymboleDAO {
 			where += "s.symbol like :symbol ";
 		}
 		
+		int idSymbole = (int) searchParams.get("idSymbole");
+		if (idSymbole > 0) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "s.idSymbole like :idSymbole ";
+		}
+		
 		// ... other parameters ... 
 
 		// 2. Create query object
@@ -77,6 +87,10 @@ public class SymboleDAO {
 		// 3. Set configured parameters
 		if (symbol != null) {
 			query.setParameter("symbol", symbol+"%");
+		}
+		
+		if (idSymbole > 0) {
+			query.setParameter("idSymbole", idSymbole);
 		}
 
 		// ... other parameters ... 

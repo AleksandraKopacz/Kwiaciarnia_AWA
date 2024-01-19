@@ -69,6 +69,16 @@ public class ZamowienieDAO {
 			where += "z.szczegoly like :szczegoly ";
 		}
 		
+		int idZamowienie = (int) searchParams.get("idZamowienie");
+		if (idZamowienie > 0) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "z.idZamowienie like :idZamowienie ";
+		}
+		
 		// ... other parameters ... 
 
 		// 2. Create query object
@@ -77,6 +87,10 @@ public class ZamowienieDAO {
 		// 3. Set configured parameters
 		if (szczegoly != null) {
 			query.setParameter("szczegoly", szczegoly+"%");
+		}
+		
+		if (idZamowienie > 0) {
+			query.setParameter("idZamowienie", idZamowienie);
 		}
 
 		// ... other parameters ... 

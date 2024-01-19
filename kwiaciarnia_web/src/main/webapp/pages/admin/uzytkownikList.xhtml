@@ -18,6 +18,12 @@
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="email:" />
 				<p:inputText value="#{uzytkownikListBB.email}" />
+				<h:outputLabel value="rola:" />
+				<p:selectOneMenu value="#{uzytkownikListBB.rola}">
+                    <f:selectItem itemLabel="Administratorzy" itemValue="1"/>
+                    <f:selectItem itemLabel="Użytkownicy" itemValue="0"/>
+                    <f:selectItem itemLabel="Wszyscy" itemValue="2"/>
+                </p:selectOneMenu>
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>

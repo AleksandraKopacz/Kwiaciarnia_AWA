@@ -70,6 +70,16 @@ public class UzytkownikDAO {
 			where += "uz.email like :email ";
 		}
 		
+		byte rola = (byte) searchParams.get("rola");
+		if (rola != 2) {
+			if (where.isEmpty()) {
+				where = "where ";
+			} else {
+				where += "and ";
+			}
+			where += "uz.rola like :rola ";
+		}
+		
 		// ... other parameters ... 
 
 		// 2. Create query object
@@ -78,6 +88,10 @@ public class UzytkownikDAO {
 		// 3. Set configured parameters
 		if (email != null) {
 			query.setParameter("email", email+"%");
+		}
+		
+		if (rola != 2) {
+			query.setParameter("rola", rola);
 		}
 
 		// ... other parameters ... 

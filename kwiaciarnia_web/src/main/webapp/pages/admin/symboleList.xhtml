@@ -16,6 +16,8 @@
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="idSymbole:" />
+				<p:inputText value="#{symboleListBB.idSymbole}" placeholder="0" />
 				<h:outputLabel value="symbol:" />
 				<p:inputText value="#{symboleListBB.symbol}" />
 				<p:commandButton value="Szukaj" update="form-table" />

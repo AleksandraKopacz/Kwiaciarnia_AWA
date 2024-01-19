@@ -16,10 +16,23 @@
 		style="margin-bottom: 1em;">
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel value="idKwiaty:" />
+				<p:inputText value="#{kwiatyListBB.idKwiaty}" placeholder="0" />
 				<h:outputLabel value="kwiat:" />
 				<p:inputText value="#{kwiatyListBB.kwiat}" />
+				<h:outputLabel value="img:" />
+				<p:inputText value="#{kwiatyListBB.img}" />
+				<h:outputLabel value="kolory:" />
+				<p:inputText value="#{kwiatyListBB.kolory}" />
+				<p:outputLabel value="Sortuj"/>
+                <p:selectOneMenu value="#{kwiatyListBB.sortuj}">
+                    <f:selectItem itemLabel="Sortuj" itemValue=""/>
+                    <f:selectItem itemLabel="Sortuj od najniższej ceny" itemValue="ASC"/>
+                    <f:selectItem itemLabel="Sortuj od najwyższej ceny" itemValue="DESC"/>
+                </p:selectOneMenu>
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
+			<p:messages id="msgs" />
 		</h:form>
 	</p:panel>
 
