@@ -18,6 +18,9 @@
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
+	
+	<h:outputText
+		value="Zalogowany: #{remoteClient.details.idUzytkownik}" />
 
 		<h:form rendered="#{zamowienieEditBB.zamowienie != null}">
 			<h:panelGrid columns="3" cellpadding="5">
@@ -28,16 +31,16 @@
 				</p:inputText>
 				<p:message for="z-szczegoly" display="icon"/>
 
-<ui:repeat value="#{zamowienieEditBB.zamowienie.uzytkownik}" var="uz">
-				<h:outputLabel for="z-uzytkownik" value="uzytkownik:" />
-					<p:inputText id="z-uzytkownik" value="#{uz.idUzytkownik}"
-						required="true" requiredMessage="Podaj ID użytkownika">
-					</p:inputText>
-				<p:message for="z-uzytkownik" display="icon"/>
+				<ui:repeat value="#{zamowienieEditBB.zamowienie.idUzytkownik}">
+					<h:outputLabel for="z-uzytkownik" value="uzytkownik:" />
+						<p:inputText id="z-uzytkownik" value="#{remoteClient.details.idUzytkownik}"
+							required="true" requiredMessage="Podaj ID użytkownika">
+						</p:inputText>
+					<p:message for="z-uzytkownik" display="icon"/>
 				</ui:repeat>
 
 				<!--  <h:outputLabel for="z-uzytkownik" value="uzytkownik:" />
-					<p:inputText id="z-uzytkownik" value="#{zamowienieEditBB.zamowienie.idUzytkownik}"
+					<p:inputText id="z-uzytkownik" value="#{zamowienieEditBB.zamowienie.setIdUzytkownik(remoteClient.details.idUzytkownik)}"
 						required="true" requiredMessage="Podaj ID użytkownika">
 					</p:inputText>
 				<p:message for="z-uzytkownik" display="icon"/> -->

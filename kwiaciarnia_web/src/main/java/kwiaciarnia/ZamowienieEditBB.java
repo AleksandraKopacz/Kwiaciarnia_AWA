@@ -7,6 +7,7 @@ import jakarta.ejb.EJB;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
+import jakarta.faces.simplesecurity.RemoteClient;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -28,6 +29,7 @@ public class ZamowienieEditBB implements Serializable {
 
 	private Zamowienie zamowienie = new Zamowienie();
 	private Uzytkownik uzytkownik = new Uzytkownik();
+	RemoteClient<Uzytkownik> client = null;
 	private Zamowienie loaded = null;
 
 	@EJB
@@ -77,8 +79,6 @@ public class ZamowienieEditBB implements Serializable {
 
 		// 2. load person passed through flash
 		Zamowienie zamowienie = new Zamowienie();
-		Uzytkownik uzytkownik = (Uzytkownik) flash.get("uzytkownik");
-		zamowienie.setUzytkownik(uzytkownik);
 	}
 	
 	public void order() {

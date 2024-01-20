@@ -21,12 +21,12 @@ public class Zamowienie implements Serializable {
 	private String szczegoly;
 	
 	@Id
-	@Column(name="id_uzytkownikFK")
+	@Column(name="id_uzytkownikFK", nullable = true)
 	private int idUzytkownik;
 
 	//bi-directional many-to-one association to Uzytkownik
 	@ManyToOne
-	@JoinColumn(name="id_uzytkownikFK", insertable = false, updatable = false)
+	@JoinColumn(name="id_uzytkownikFK", insertable = false, updatable = false, nullable = true)
 	private Uzytkownik uzytkownik;
 
 	public Zamowienie() {
