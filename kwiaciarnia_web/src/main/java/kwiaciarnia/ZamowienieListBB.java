@@ -16,6 +16,9 @@ import jakarta.servlet.http.HttpSession;
 import kwiaciarnia.dao.ZamowienieDAO;
 import kwiaciarnia.jpa.Zamowienie;
 
+import kwiaciarnia.dao.UzytkownikDAO;
+import kwiaciarnia.jpa.Uzytkownik;
+
 @Named
 @RequestScoped
 public class ZamowienieListBB {
@@ -23,10 +26,12 @@ public class ZamowienieListBB {
 	private static final long serialVersionUID = 1L;
 
 	private static final String PAGE_ZAMOWIENIE_EDIT = "/pages/admin/zamowienieEdit?faces-redirect=true";
+	private static final String PAGE_ZAMOWIENIE_NEW = "/pages/admin/zamowienieNew?faces-redirect=true";
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private String szczegoly;
 	private int idZamowienie;
+	private int idUzytkownik;
 		
 	@Inject
 	ExternalContext extcontext;
@@ -51,6 +56,14 @@ public class ZamowienieListBB {
 
 	public void setIdZamowienie(int idZamowienie) {
 		this.idZamowienie = idZamowienie;
+	}
+
+	public int getIdUzytkownik() {
+		return idUzytkownik;
+	}
+
+	public void setIdUzytkownik(int idUzytkownik) {
+		this.idUzytkownik = idUzytkownik;
 	}
 
 	public List<Zamowienie> getFullList(){
@@ -85,7 +98,7 @@ public class ZamowienieListBB {
 		//2. Pass object through flash	
 		flash.put("zamowienie", zamowienie);
 		
-		return PAGE_ZAMOWIENIE_EDIT;
+		return PAGE_ZAMOWIENIE_NEW;
 	}
 
 	public String editZamowienie(Zamowienie zamowienie){

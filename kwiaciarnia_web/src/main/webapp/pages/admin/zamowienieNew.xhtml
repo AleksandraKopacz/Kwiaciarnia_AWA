@@ -28,13 +28,11 @@
 				</p:inputText>
 				<p:message for="z-szczegoly" display="icon"/>
 
-				<ui:repeat value="#{zamowienieEditBB.zamowienie.uzytkownik}" var="uz">
 				<h:outputLabel for="z-uzytkownik" value="uzytkownik:" />
-					<p:inputText id="z-uzytkownik" value="#{uz.idUzytkownik}"
+					<p:inputText id="z-uzytkownik" value="#{zamowienieEditBB.zamowienie.idUzytkownik}"
 						required="true" requiredMessage="Podaj ID użytkownika">
 					</p:inputText>
 				<p:message for="z-uzytkownik" display="icon"/>
-				</ui:repeat>
 
 			</h:panelGrid>
 

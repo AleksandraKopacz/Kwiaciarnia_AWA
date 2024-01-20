@@ -15,6 +15,9 @@ import jakarta.servlet.http.HttpSession;
 import kwiaciarnia.dao.ZamowienieDAO;
 import kwiaciarnia.jpa.Zamowienie;
 
+import kwiaciarnia.dao.UzytkownikDAO;
+import kwiaciarnia.jpa.Uzytkownik;
+
 @Named
 @ViewScoped
 public class ZamowienieEditBB implements Serializable {
@@ -24,10 +27,12 @@ public class ZamowienieEditBB implements Serializable {
 	private static final String PAGE_STAY_AT_THE_SAME = null;
 
 	private Zamowienie zamowienie = new Zamowienie();
+	private Uzytkownik uzytkownik = new Uzytkownik();
 	private Zamowienie loaded = null;
 
 	@EJB
 	ZamowienieDAO zamowienieDAO;
+	UzytkownikDAO uzytkownikDAO;
 
 	@Inject
 	FacesContext context;
@@ -37,6 +42,10 @@ public class ZamowienieEditBB implements Serializable {
 
 	public Zamowienie getZamowienie() {
 		return zamowienie;
+	}
+
+	public Uzytkownik getUzytkownik() {
+		return uzytkownik;
 	}
 
 	public void onLoad() throws IOException {
@@ -59,6 +68,29 @@ public class ZamowienieEditBB implements Serializable {
 			// }
 		}
 
+	}
+	
+	public void onLoadOrder() throws IOException {
+		// 1. load person passed through session
+		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+		// loaded = (Person) session.getAttribute("person");
+
+		// 2. load person passed through flash
+		Zamowienie zamowienie = new Zamowienie();
+		Uzytkownik uzytkownik = (Uzytkownik) flash.get("uzytkownik");
+		zamowienie.setUzytkownik(uzytkownik);
+	}
+	
+	public void order() {
+		try {
+			zamowienieDAO.create(zamowienie);
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Zamówienie zostało złożone", null));
+		} catch (Exception e) {
+			e.printStackTrace();
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Wystąpił błąd podczas zapisu", null));
+		}
 	}
 
 	public String saveData() {

@@ -5,21 +5,21 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-
+	
 <f:metadata>
-    <f:viewAction action="#{uzytkownikEditBB.onLoad()}" />
+    <f:viewAction action="#{uzytkownikEditBB.registerOnLoad()}" />
 </f:metadata>
 
 <h:head>
 	<meta charset="utf-8"/>
-	<title>Uzytkownik - edycja</title>
+	<title>Rejestracja</title>
 </h:head>
 
 <h:body style="background-color: #eee; margin: 0.5em;">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
 
-		<h:form rendered="#{uzytkownikEditBB.uzytkownik != null}">
+		<h:form>
 			<h:panelGrid columns="3" cellpadding="5">
 
 				<h:outputLabel for="uz-email" value="email:" />
@@ -29,14 +29,13 @@
 				<p:message for="uz-email" display="icon"/>
 
 				<h:outputLabel for="uz-haslo" value="haslo:" />
-				<p:inputText id="uz-haslo" value="#{uzytkownikEditBB.uzytkownik.haslo}"
+				<p:inputSecret id="uz-haslo" value="#{uzytkownikEditBB.uzytkownik.haslo}"
 					required="true" requiredMessage="Podaj hasło">
-				</p:inputText>
+				</p:inputSecret>
 				<p:message for="uz-haslo" display="icon"/>
 
-				<h:outputLabel for="uz-rola" value="rola:" />
 				<p:inputText id="uz-rola" value="#{uzytkownikEditBB.uzytkownik.rola}"
-					required="true" requiredMessage="Podaj rolę">
+					required="true" requiredMessage="Podaj rolę" placeholder="0" type="hidden">
 					<f:validateLongRange minimum = "0" maximum = "1" />
 				</p:inputText>
 				<p:message for="uz-rola" display="icon"/>
@@ -45,14 +44,12 @@
 
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{uzytkownikEditBB.saveData()}"
+			<p:commandButton value="Zapisz" action="#{uzytkownikEditBB.registerUzytkownik()}"
 				style="margin-right: 1em;" update="@form" />
-
-			<p:button value="Anuluj" outcome="uzytkownikList" />
 		</h:form>
 
 	</p:panel>
-<p:linkButton outcome="/public/index" value="index" style="margin-right:20px;" />
+
 </h:body>
 
 </html>

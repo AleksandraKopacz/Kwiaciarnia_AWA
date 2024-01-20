@@ -7,12 +7,12 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <f:metadata>
-    <f:viewAction action="#{zamowienieEditBB.onLoad()}" />
+    <f:viewAction action="#{zamowienieEditBB.onLoadOrder()}" />
 </f:metadata>
 
 <h:head>
 	<meta charset="utf-8"/>
-	<title>Zamowienie - edycja</title>
+	<title>Złóż zamówienie</title>
 </h:head>
 
 <h:body style="background-color: #eee; margin: 0.5em;">
@@ -28,7 +28,7 @@
 				</p:inputText>
 				<p:message for="z-szczegoly" display="icon"/>
 
-				<ui:repeat value="#{zamowienieEditBB.zamowienie.uzytkownik}" var="uz">
+<ui:repeat value="#{zamowienieEditBB.zamowienie.uzytkownik}" var="uz">
 				<h:outputLabel for="z-uzytkownik" value="uzytkownik:" />
 					<p:inputText id="z-uzytkownik" value="#{uz.idUzytkownik}"
 						required="true" requiredMessage="Podaj ID użytkownika">
@@ -36,18 +36,23 @@
 				<p:message for="z-uzytkownik" display="icon"/>
 				</ui:repeat>
 
+				<!--  <h:outputLabel for="z-uzytkownik" value="uzytkownik:" />
+					<p:inputText id="z-uzytkownik" value="#{zamowienieEditBB.zamowienie.idUzytkownik}"
+						required="true" requiredMessage="Podaj ID użytkownika">
+					</p:inputText>
+				<p:message for="z-uzytkownik" display="icon"/> -->
+
 			</h:panelGrid>
 
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{zamowienieEditBB.saveData()}"
+			<p:commandButton value="Zapisz" action="#{zamowienieEditBB.order()}"
 				style="margin-right: 1em;" update="@form" />
 
-			<p:button value="Anuluj" outcome="zamowienieList" />
 		</h:form>
 
 	</p:panel>
-<p:linkButton outcome="/public/index" value="index" style="margin-right:20px;" />
+
 </h:body>
 
 </html>

@@ -19,10 +19,14 @@ public class Zamowienie implements Serializable {
 
 	@Lob
 	private String szczegoly;
+	
+	@Id
+	@Column(name="id_uzytkownikFK")
+	private int idUzytkownik;
 
 	//bi-directional many-to-one association to Uzytkownik
 	@ManyToOne
-	@JoinColumn(name="id_uzytkownikFK")
+	@JoinColumn(name="id_uzytkownikFK", insertable = false, updatable = false)
 	private Uzytkownik uzytkownik;
 
 	public Zamowienie() {
@@ -42,6 +46,14 @@ public class Zamowienie implements Serializable {
 
 	public void setSzczegoly(String szczegoly) {
 		this.szczegoly = szczegoly;
+	}
+
+	public int getIdUzytkownik() {
+		return idUzytkownik;
+	}
+
+	public void setIdUzytkownik(int idUzytkownik) {
+		this.idUzytkownik = idUzytkownik;
 	}
 
 	public Uzytkownik getUzytkownik() {
