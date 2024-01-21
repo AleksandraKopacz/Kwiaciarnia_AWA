@@ -3,6 +3,7 @@ package kwiaciarnia.dao;
 import java.util.List;
 import java.util.Map;
 
+import kwiaciarnia.jpa.Uzytkownik;
 import kwiaciarnia.jpa.Zamowienie;
 
 import jakarta.ejb.Stateless;

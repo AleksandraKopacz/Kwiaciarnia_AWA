@@ -39,12 +39,6 @@
 					<p:message for="z-uzytkownik" display="icon"/>
 				</ui:repeat>
 
-				<!--  <h:outputLabel for="z-uzytkownik" value="uzytkownik:" />
-					<p:inputText id="z-uzytkownik" value="#{zamowienieEditBB.zamowienie.setIdUzytkownik(remoteClient.details.idUzytkownik)}"
-						required="true" requiredMessage="Podaj ID użytkownika">
-					</p:inputText>
-				<p:message for="z-uzytkownik" display="icon"/> -->
-
 			</h:panelGrid>
 
 			<p:messages id="msgs" />
@@ -53,7 +47,7 @@
 				style="margin-right: 1em;" update="@form" />
 
 		</h:form>
-
+<p:linkButton outcome="/pages/user/userEdit" value="index" style="margin-right:20px;" />
 	</p:panel>
 
 </h:body>

@@ -6,26 +6,24 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:head>
-	<meta charset="utf-8" />
-	<title>JSF 06 - EJB, bazy danych (mapowanie
-		obiektowo-relacyjne)</title>
-</h:head>
-<h:body style="background-color: #eee; margin: 0.5em;">
-<p:linkButton outcome="/pages/admin/kwiatyList" value="kwiatyList" style="margin-right:20px;" />
-<p:linkButton outcome="/pages/admin/symboleList" value="symboleList" style="margin-right:20px;" />
-<p:linkButton outcome="/pages/admin/uslugiList" value="uslugiList" style="margin-right:20px;" />
-<p:linkButton outcome="/pages/admin/uzytkownikList" value="uzytkownikList" style="margin-right:20px;" />
-<p:linkButton outcome="/pages/admin/zamowienieList" value="zamowienieList" style="margin-right:20px;" />
-<p:linkButton outcome="/public/kwiaty" value="kwiaty" style="margin-right:20px;" />
-<p:linkButton outcome="/public/uslugi" value="uslugi" style="margin-right:20px;" />
-<p:linkButton outcome="/public/login" value="login" style="margin-right:20px;" />
-<p:linkButton outcome="/pages/user/zamowienie" value="zamowienie" style="margin-right:20px;" />
-<p:linkButton outcome="/public/register" value="register" style="margin-right:20px;" />
-<h:form>
-<p:commandButton value="Wyloguj się" action="#{loginBB.doLogout()}"
-				style="margin-right: 1em;" update="@form" />
-</h:form>
-<p:linkButton outcome="/public/index" value="index" style="margin-right:20px;" />
-</h:body>
+	<ui:composition template="/templates/main-template.xhtml">
+	
+	<ui:define name="title">
+		Kwiaciarnia Lawendowe Pole
+	</ui:define>
+	
+	<ui:define name="content">
+		<div id="imageIndex">
+			Tu będzie obrazek i link
+		</div>
+		<div id="description">
+			Tu będzie opis
+		</div>
+		<div id="orderDescription">
+			Tu będzie link do zamówienia
+		</div>
+	</ui:define>
+	
+	</ui:composition>
+
 </html>

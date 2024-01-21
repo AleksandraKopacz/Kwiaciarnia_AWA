@@ -6,7 +6,10 @@ import java.util.Map;
 
 import kwiaciarnia.dao.UzytkownikDAO;
 import kwiaciarnia.jpa.Uzytkownik;
+
 import kwiaciarnia.jpa.Zamowienie;
+import kwiaciarnia.dao.ZamowienieDAO;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -45,7 +48,10 @@ public class LoginBB {
 
 	@Inject
 	UzytkownikDAO uzytkownikDAO;
-	
+
+	@Inject
+	ZamowienieDAO zamowienieDAO;
+
 	@Inject
 	Flash flash;
 
@@ -84,6 +90,7 @@ public class LoginBB {
 				if (role.equals("0")) {
 					client.getRoles().add(role);
 					NEXT_PAGE = "/pages/user/zamowienie";
+					flash.put("uzytkownik", uzytkownik);
 					break;
 				}
 			}

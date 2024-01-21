@@ -44,7 +44,8 @@ public class UzytkownikEditBB implements Serializable {
 
 	public void onLoad() throws IOException {
 		// 1. load person passed through session
-		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+		// HttpSession session = (HttpSession)
+		// context.getExternalContext().getSession(true);
 		// loaded = (Person) session.getAttribute("person");
 
 		// 2. load person passed through flash
@@ -69,18 +70,18 @@ public class UzytkownikEditBB implements Serializable {
 		if (loaded == null) {
 			return PAGE_STAY_AT_THE_SAME;
 		}
-		
+
 		List<Uzytkownik> list = null;
-		Map<String,Object> searchParams = new HashMap<String, Object>();
-		searchParams.put("email", uzytkownik.getEmail());		
+		Map<String, Object> searchParams = new HashMap<String, Object>();
+		searchParams.put("email", uzytkownik.getEmail());
 		list = uzytkownikDAO.getList(searchParams);
-		
+
 		try {
 			if (uzytkownik.getIdUzytkownik() == 0) {
 				// new record
-				if(!list.isEmpty()) {
-					context.addMessage(null,
-							new FacesMessage(FacesMessage.SEVERITY_ERROR, "Użytkownik o takim adresie e-mail już istnieje", null));
+				if (!list.isEmpty()) {
+					context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"Użytkownik o takim adresie e-mail już istnieje", null));
 					return PAGE_STAY_AT_THE_SAME;
 				} else {
 					uzytkownikDAO.create(uzytkownik);
@@ -98,26 +99,40 @@ public class UzytkownikEditBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 	}
-	
+
+	public String saveChanges() {
+		try {
+			uzytkownikDAO.merge(uzytkownik);
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Zmiany zostały zapisane", null));
+			return PAGE_STAY_AT_THE_SAME;
+		} catch (Exception e) {
+			e.printStackTrace();
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "wystąpił błąd podczas zapisu", null));
+			return PAGE_STAY_AT_THE_SAME;
+		}
+	}
+
 	public void registerOnLoad() {
 		Uzytkownik uzytkownik = new Uzytkownik();
 	}
-	
+
 	public String registerUzytkownik() {
-		
+
 		List<Uzytkownik> list = null;
-		Map<String,Object> searchParams = new HashMap<String, Object>();
-		searchParams.put("email", uzytkownik.getEmail());		
+		Map<String, Object> searchParams = new HashMap<String, Object>();
+		searchParams.put("email", uzytkownik.getEmail());
 		list = uzytkownikDAO.getList(searchParams);
-		
+
 		try {
-			if(!list.isEmpty()) {
-				context.addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_ERROR, "Użytkownik o takim adresie e-mail już istnieje", null));
+			if (!list.isEmpty()) {
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Użytkownik o takim adresie e-mail już istnieje", null));
 			} else {
 				uzytkownikDAO.create(uzytkownik);
-				context.addMessage(null,
-						new FacesMessage(FacesMessage.SEVERITY_INFO, "Konto zostało utworzone, możesz teraz zalogować się", null));
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+						"Konto zostało utworzone, możesz teraz zalogować się", null));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,6 +141,6 @@ public class UzytkownikEditBB implements Serializable {
 			return PAGE_STAY_AT_THE_SAME;
 		}
 		return PAGE_STAY_AT_THE_SAME;
-		
+
 	}
 }

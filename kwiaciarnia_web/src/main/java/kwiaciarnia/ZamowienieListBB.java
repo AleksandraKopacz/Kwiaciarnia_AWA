@@ -87,6 +87,12 @@ public class ZamowienieListBB {
 		
 		return list;
 	}
+	
+	public List<Zamowienie> getOrderList() {
+		List<Zamowienie> uzytkownikList = null;
+		uzytkownikList = (List<Zamowienie>) flash.get("uzytkownikList");
+		return uzytkownikList;
+	}
 
 	public String newZamowienie(){
 		Zamowienie zamowienie = new Zamowienie();
