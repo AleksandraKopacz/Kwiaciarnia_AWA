@@ -40,23 +40,13 @@ public class UslugiEditBB implements Serializable {
 	}
 
 	public void onLoad() throws IOException {
-		// 1. load person passed through session
-		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-		// loaded = (Person) session.getAttribute("person");
 
-		// 2. load person passed through flash
 		loaded = (Uslugi) flash.get("uslugi");
 
-		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
 			uslugi = loaded;
-			// session.removeAttribute("person");
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
-			// if (!context.isPostback()) { //possible redirect
-			// context.getExternalContext().redirect("personList.xhtml");
-			// context.responseComplete();
-			// }
 		}
 
 	}
@@ -75,6 +65,8 @@ public class UslugiEditBB implements Serializable {
 				// existing record
 				uslugiDAO.merge(uslugi);
 			}
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Rekord został zapisany", null));
 		} catch (Exception e) {
 			e.printStackTrace();
 			context.addMessage(null,

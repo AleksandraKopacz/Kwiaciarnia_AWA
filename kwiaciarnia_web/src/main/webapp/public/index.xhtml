@@ -14,13 +14,42 @@
 	
 	<ui:define name="content">
 		<div id="imageIndex">
-			Tu będzie obrazek i link
+			<div class="child">
+				<h1>Kwiaciarnia Lawendowe Pole</h1>
+				<h2>Zawsze znajdą się kwiaty dla tych, którzy chcą je zobaczyć</h2>
+				<h3>Henri Matisse</h3>
+			</div>
 		</div>
 		<div id="description">
-			Tu będzie opis
+			<h2 style="margin-left:10px;">Witamy na Lawendowym Polu</h2>
+			<div id="descLeft">
+				<p>Po co chodzimy do kwiaciarni? Czasami, by kupić kwiaty. Najczęściej jednak po to, by sprawić komuś
+                    radość, „opowiedzieć” o uczuciach.
+                    Szukasz czegoś wyjątkowego? Przyjdź, pomożemy. Na okrągłą rocznicę ślubu przygotujemy tort ze
+                    świeżych kwiatów, a na urodziny bukiet w kaloszu lub na kołpaku. Artystycznie zapakujemy wymarzony
+                    prezent i udekorujemy kwiatami salę na przyjęcie weselne. Tworzymy z fantazją, mamy mnóstwo pomysłów
+                    i duże wyczucie oczekiwań klienta.</p>
+			</div>
+			<div id="descRight">
+				<p>Naszą historię napisała pasja i miłość do kwiatów. Kwiaciarnia Lawendowe Pole została założona
+                        przez osobę, która kocha to, co robi. Nasi floryści są pozytywni, otwarci, kreatywni i
+                        doświadczeni. Mają duże wyczucie smaku i ogromną wiedzę na temat kwiatów.</p>
+			</div>
 		</div>
 		<div id="orderDescription">
-			Tu będzie link do zamówienia
+			<div class="child2">
+				<ui:fragment rendered="#{remoteClient.details.rola == 1}">
+					<p:commandButton action="/pages/admin/kwiatyList" value="Panel administratora" style="margin-right:2em;" />
+				</ui:fragment>
+				<ui:fragment rendered="#{remoteClient.details.rola == 0}">
+					<p:commandButton action="/pages/user/zamowienie" value="Złóż zamówienie" style="margin-right:2em;" />
+				</ui:fragment>
+				<ui:fragment rendered="#{remoteClient.details == null}">
+					<p>Aby złożyć zamówienie w naszej kwiaciarni należy utworzyć konto i zalogować się</p>
+					<p><p:commandButton action="/public/login" value="Zaloguj się" style="margin-right:2em;" /><br />
+					<p:commandLink action="/public/register" value="Zarejestruj się" style="margin-right:2em;" /></p>
+				</ui:fragment>
+			</div>
 		</div>
 	</ui:define>
 	

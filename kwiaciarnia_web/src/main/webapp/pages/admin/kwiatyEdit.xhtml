@@ -5,36 +5,37 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<f:metadata>
+    	<f:viewAction action="#{kwiatyEditBB.onLoad()}" />
+	</f:metadata>
 
-<f:metadata>
-    <f:viewAction action="#{kwiatyEditBB.onLoad()}" />
-</f:metadata>
-
-<h:head>
-	<meta charset="utf-8"/>
-	<title>Kwiaty - edycja</title>
-</h:head>
-
-<h:body style="background-color: #eee; margin: 0.5em;">
+	<ui:composition template="/templates/admin-template.xhtml">
+	
+		<ui:define name="title">
+			Kwiaty
+		</ui:define>
+		
+		<ui:define name="adminRight">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
 
 		<h:form rendered="#{kwiatyEditBB.kwiaty != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="k-kwiat" value="kwiat:" />
+				<h:outputLabel for="k-kwiat" value="Kwiat:" />
 				<p:inputText id="k-kwiat" value="#{kwiatyEditBB.kwiaty.kwiat}"
 					required="true" requiredMessage="Podaj nazwę kwiatu">
 				</p:inputText>
 				<p:message for="k-kwiat" display="icon"/>
 
-				<h:outputLabel for="k-kolory" value="kolory:" />
+				<h:outputLabel for="k-kolory" value="Kolory:" />
 				<p:inputText id="k-kolory" value="#{kwiatyEditBB.kwiaty.kolory}"
 					required="true" requiredMessage="Podaj listę kolorów">
 				</p:inputText>
 				<p:message for="k-kolory" display="icon"/>
 
-				<h:outputLabel for="k-cena" value="cena:" />
+				<h:outputLabel for="k-cena" value="Cena:" />
 				<p:inputText id="k-cena" value="#{kwiatyEditBB.kwiaty.cena}"
 					required="true" requiredMessage="Podaj cenę">
 				</p:inputText>
@@ -54,10 +55,13 @@
 				style="margin-right: 1em;" update="@form" />
 
 			<p:button value="Anuluj" outcome="kwiatyList" />
+			
 		</h:form>
 
 	</p:panel>
-<p:linkButton outcome="/public/index" value="index" style="margin-right:20px;" />
-</h:body>
+	
+		</ui:define>
+	
+	</ui:composition>
 
 </html>

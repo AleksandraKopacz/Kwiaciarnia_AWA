@@ -15,7 +15,7 @@ public class Uzytkownik implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_uzytkownik", nullable = true)
+	@Column(name="id_uzytkownik")
 	private int idUzytkownik;
 
 	private String email;

@@ -6,99 +6,104 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:head>
-	<meta charset="utf-8" />
-	<title>Kwiaty</title>
-</h:head>
-<h:body style="background-color: #eee; margin: 0.5em;">
-
-	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
-		style="margin-bottom: 1em;">
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="idKwiaty:" />
-				<p:inputText value="#{kwiatyListBB.idKwiaty}" placeholder="0" />
-				<h:outputLabel value="kwiat:" />
-				<p:inputText value="#{kwiatyListBB.kwiat}" />
-				<h:outputLabel value="img:" />
-				<p:inputText value="#{kwiatyListBB.img}" />
-				<h:outputLabel value="kolory:" />
-				<p:inputText value="#{kwiatyListBB.kolory}" />
-				<p:outputLabel value="Sortuj"/>
-                <p:selectOneMenu value="#{kwiatyListBB.sortuj}">
-                    <f:selectItem itemLabel="Sortuj" itemValue=""/>
-                    <f:selectItem itemLabel="Sortuj od najniższej ceny" itemValue="ASC"/>
-                    <f:selectItem itemLabel="Sortuj od najwyższej ceny" itemValue="DESC"/>
-                </p:selectOneMenu>
-				<p:commandButton value="Szukaj" update="form-table" />
-			</h:panelGrid>
-			<p:messages id="msgs" />
-		</h:form>
-	</p:panel>
-
-	<p:messages />
-
-	<h:form id="form-table" style="margin-bottom:1em;">
-
-		<p:commandButton value="Dodaj nowy rekord"
-			action="#{kwiatyListBB.newKwiaty()}" style="margin-bottom:1em;" />
-
-		<p:dataTable value="#{kwiatyListBB.list}" var="k"  rows="5"
-                     paginator="true" paginatorPosition="both"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords} rekordów"
-                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}" reflow="true"
-                     >
+	<ui:composition template="/templates/admin-template.xhtml">
+	
+		<ui:define name="title">
+			Kwiaty
+		</ui:define>
 		
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="idKwiaty" />
-				</f:facet>
-				<h:outputText value="#{k.idKwiaty}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="img" />
-				</f:facet>
-				<h:outputText value="#{k.img}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="kwiat" />
-				</f:facet>
-				<h:outputText value="#{k.kwiat}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="kolory" />
-				</f:facet>
-				<h:outputText value="#{k.kolory}" />
-			</p:column>
+		<ui:define name="adminRight">
+	
+			<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+				style="margin-bottom: 1em;">
+				<h:form>
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel value="idKwiaty:" />
+						<p:inputText value="#{kwiatyListBB.idKwiaty}" placeholder="0" />
+						<h:outputLabel value="kwiat:" />
+						<p:inputText value="#{kwiatyListBB.kwiat}" />
+						<h:outputLabel value="img:" />
+						<p:inputText value="#{kwiatyListBB.img}" />
+						<h:outputLabel value="kolory:" />
+						<p:inputText value="#{kwiatyListBB.kolory}" />
+						<p:outputLabel value="Sortuj"/>
+		                <p:selectOneMenu value="#{kwiatyListBB.sortuj}">
+		                    <f:selectItem itemLabel="Sortuj" itemValue=""/>
+		                    <f:selectItem itemLabel="Sortuj od najniższej ceny" itemValue="ASC"/>
+		                    <f:selectItem itemLabel="Sortuj od najwyższej ceny" itemValue="DESC"/>
+		                </p:selectOneMenu>
+						<p:commandButton value="Szukaj" update="form-table" />
+					</h:panelGrid>
+					<p:messages id="msgs" />
+				</h:form>
+			</p:panel>
+		
+			<p:messages />
+		
+			<h:form id="form-table" style="margin-bottom:1em;">
+		
+				<p:commandButton value="Dodaj nowy rekord"
+					action="#{kwiatyListBB.newKwiaty()}" style="margin-bottom:1em;" />
+		
+				<p:dataTable value="#{kwiatyListBB.list}" var="k"  rows="5"
+		                     paginator="true" paginatorPosition="both"
+		                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords} rekordów"
+		                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}" reflow="true"
+		                     >
+				
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="idKwiaty" />
+						</f:facet>
+						<h:outputText value="#{k.idKwiaty}" />
+					</p:column>
+		
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="img" />
+						</f:facet>
+						<h:outputText value="#{k.img}" />
+					</p:column>
+		
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="kwiat" />
+						</f:facet>
+						<h:outputText value="#{k.kwiat}" />
+					</p:column>
+		
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="kolory" />
+						</f:facet>
+						<h:outputText value="#{k.kolory}" />
+					</p:column>
+					
+					<p:column sortOrder="asc">
+						<f:facet name="header">
+							<h:outputText value="cena" />
+						</f:facet>
+						<h:outputText value="#{k.cena}" />
+					</p:column>
+		
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="opcje" />
+						</f:facet>
+		
+						<p:commandButton value="Edytuj"
+							action="#{kwiatyListBB.editKwiaty(k)}" />
+		
+						<p:commandButton value="Usuń"
+							action="#{kwiatyListBB.deleteKwiaty(k)}" update="@form" />
+					</p:column>
+		
+				</p:dataTable>
+			</h:form>
 			
-			<p:column sortOrder="asc">
-				<f:facet name="header">
-					<h:outputText value="cena" />
-				</f:facet>
-				<h:outputText value="#{k.cena}" />
-			</p:column>
+		</ui:define>
+	
+	</ui:composition>
 
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="opcje" />
-				</f:facet>
-
-				<p:commandButton value="Edytuj"
-					action="#{kwiatyListBB.editKwiaty(k)}" />
-
-				<p:commandButton value="Usuń"
-					action="#{kwiatyListBB.deleteKwiaty(k)}" update="@form" />
-			</p:column>
-
-		</p:dataTable>
-	</h:form>
-<p:linkButton outcome="/public/index" value="index" style="margin-right:20px;" />
-</h:body>
 </html>

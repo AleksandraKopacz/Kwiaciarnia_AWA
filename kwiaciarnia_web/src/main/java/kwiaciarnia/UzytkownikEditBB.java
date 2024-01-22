@@ -13,8 +13,6 @@ import jakarta.faces.context.Flash;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.servlet.http.HttpSession;
-
 import kwiaciarnia.dao.UzytkownikDAO;
 import kwiaciarnia.jpa.Uzytkownik;
 
@@ -43,24 +41,13 @@ public class UzytkownikEditBB implements Serializable {
 	}
 
 	public void onLoad() throws IOException {
-		// 1. load person passed through session
-		// HttpSession session = (HttpSession)
-		// context.getExternalContext().getSession(true);
-		// loaded = (Person) session.getAttribute("person");
 
-		// 2. load person passed through flash
 		loaded = (Uzytkownik) flash.get("uzytkownik");
 
-		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
 			uzytkownik = loaded;
-			// session.removeAttribute("person");
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
-			// if (!context.isPostback()) { //possible redirect
-			// context.getExternalContext().redirect("personList.xhtml");
-			// context.responseComplete();
-			// }
 		}
 
 	}
@@ -85,11 +72,15 @@ public class UzytkownikEditBB implements Serializable {
 					return PAGE_STAY_AT_THE_SAME;
 				} else {
 					uzytkownikDAO.create(uzytkownik);
+					context.addMessage(null,
+							new FacesMessage(FacesMessage.SEVERITY_INFO, "Rekord został zapisany", null));
 					return PAGE_UZYTKOWNIK_LIST;
 				}
 			} else {
 				// existing record
 				uzytkownikDAO.merge(uzytkownik);
+				context.addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO, "Rekord został zapisany", null));
 				return PAGE_UZYTKOWNIK_LIST;
 			}
 		} catch (Exception e) {

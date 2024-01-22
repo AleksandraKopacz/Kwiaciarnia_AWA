@@ -6,43 +6,42 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:head>
-	<meta charset="utf-8" />
-	<title>Kwiaty</title>
-</h:head>
-<h:body style="background-color: #eee; margin: 0.5em;">
-
-	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
-		style="margin-bottom: 1em;">
+	<ui:composition template="/templates/main-template.xhtml">
+	
+	<ui:define name="title">
+		Kwiaty
+	</ui:define>
+	
+	<ui:define name="content">
+	<div id="storeWrapper">
+	<div class="filter">
 		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="Kwiat:" />
-				<p:inputText value="#{kwiatyListBB.kwiat}" />
-				<h:outputLabel value="Kolor:" />
-				<p:inputText value="#{kwiatyListBB.kolory}" />
-				<p:outputLabel value="Sortuj:"/>
+				<span style="padding-right:7em;"><h:outputLabel value="Kwiat:" />
+				<p:inputText value="#{kwiatyListBB.kwiat}" /></span>
+				<span style="padding-right:7em;"><h:outputLabel value="Kolor:" />
+				<p:inputText value="#{kwiatyListBB.kolory}" /></span>
+				<span style="padding-right:7em;"><p:outputLabel value="Sortuj:"/>
                 <p:selectOneMenu value="#{kwiatyListBB.sortuj}">
                     <f:selectItem itemLabel="Sortuj" itemValue=""/>
                     <f:selectItem itemLabel="Sortuj od najniższej ceny" itemValue="ASC"/>
                     <f:selectItem itemLabel="Sortuj od najwyższej ceny" itemValue="DESC"/>
-                </p:selectOneMenu>
-				<p:commandButton value="Szukaj" update="form-table" />
-			</h:panelGrid>
+                </p:selectOneMenu></span>
+				<span style="padding-right:7em;"><p:commandButton value="Szukaj" update="form-table" /></span>
 		</h:form>
-	</p:panel>
 
 	<p:messages />
+	</div>
 
 	<h:form id="form-table" style="margin-bottom:1em;">
 
-		<p:dataTable value="#{kwiatyListBB.list}" var="k"
+		<p:dataTable value="#{kwiatyListBB.list}" var="k" rows="5"
                      paginator="true" paginatorPosition="bottom"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords}"
                      rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}" reflow="true">
 
 			<p:column>
-				<p:graphicImage library="template" name="img/#{k.img}" />
+				<p:graphicImage class="storeImg" library="template" name="img/#{k.img}" />
 			</p:column>
 
 			<p:column>
@@ -66,6 +65,10 @@
 		</p:dataTable>
 		
 	</h:form>
+	</div>
+	
+	</ui:define>
+	
+	</ui:composition>
 
-</h:body>
 </html>

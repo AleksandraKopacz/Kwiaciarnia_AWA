@@ -6,50 +6,52 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
-<f:metadata>
-    <f:viewAction action="#{uzytkownikEditBB.registerOnLoad()}" />
-</f:metadata>
+	<f:metadata>
+    	<f:viewAction action="#{uzytkownikEditBB.registerOnLoad()}" />
+	</f:metadata>
 
-<h:head>
-	<meta charset="utf-8"/>
-	<title>Rejestracja</title>
-</h:head>
-
-<h:body style="background-color: #eee; margin: 0.5em;">
-
-	<p:panel toggleable="true" header="Edycja rekordu">
+	<ui:composition template="/templates/main-template.xhtml">
+	
+	<ui:define name="title">
+		Zaloguj się
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<div id="formWrapper">
+			<div class="form">
+			<h1 class="formTitle">Zarejestruj się</h1>
 
 		<h:form>
-			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="uz-email" value="email:" />
+				<p><h:outputLabel for="uz-email" value="Adres e-mail:" /><br />
 				<p:inputText id="uz-email" value="#{uzytkownikEditBB.uzytkownik.email}"
 					required="true" requiredMessage="Podaj adres e-mail">
 				</p:inputText>
-				<p:message for="uz-email" display="icon"/>
+				<p:message for="uz-email" display="icon"/></p>
 
-				<h:outputLabel for="uz-haslo" value="haslo:" />
-				<p:inputSecret id="uz-haslo" value="#{uzytkownikEditBB.uzytkownik.haslo}"
-					required="true" requiredMessage="Podaj hasło">
-				</p:inputSecret>
-				<p:message for="uz-haslo" display="icon"/>
+				<p><h:outputLabel for="uz-haslo" value="Hasło:" /><br />
+				<p:password id="uz-haslo" value="#{uzytkownikEditBB.uzytkownik.haslo}"
+					required="true" requiredMessage="Podaj haslo">
+				</p:password>
+				<p:message for="uz-haslo" display="icon"/></p>
 
 				<p:inputText id="uz-rola" value="#{uzytkownikEditBB.uzytkownik.rola}"
-					required="true" requiredMessage="Podaj rolę" placeholder="0" type="hidden">
+					required="true" requiredMessage="Podaj role" placeholder="0" type="hidden">
 					<f:validateLongRange minimum = "0" maximum = "1" />
 				</p:inputText>
 				<p:message for="uz-rola" display="icon"/>
-				
-			</h:panelGrid>
 
-			<p:messages id="msgs" />
+			<p:messages id="msgs" /> 
 
-			<p:commandButton value="Zapisz" action="#{uzytkownikEditBB.registerUzytkownik()}"
-				style="margin-right: 1em;" update="@form" />
+			<p:commandButton value="Zarejestruj" action="#{uzytkownikEditBB.registerUzytkownik()}"
+				update="@form" /> 
 		</h:form>
-
-	</p:panel>
-
-</h:body>
+			</div>
+		</div>
+		
+	</ui:define>
+	
+	</ui:composition>
 
 </html>

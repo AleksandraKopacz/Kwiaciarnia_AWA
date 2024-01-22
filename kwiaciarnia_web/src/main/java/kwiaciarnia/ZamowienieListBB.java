@@ -9,10 +9,7 @@ import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ejb.EJB;
 import jakarta.faces.context.ExternalContext;
-import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
-import jakarta.servlet.http.HttpSession;
-
 import kwiaciarnia.dao.ZamowienieDAO;
 import kwiaciarnia.jpa.Zamowienie;
 
@@ -96,23 +93,14 @@ public class ZamowienieListBB {
 
 	public String newZamowienie(){
 		Zamowienie zamowienie = new Zamowienie();
-		
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash	
+			
 		flash.put("zamowienie", zamowienie);
 		
 		return PAGE_ZAMOWIENIE_NEW;
 	}
 
 	public String editZamowienie(Zamowienie zamowienie){
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash 
+
 		flash.put("zamowienie", zamowienie);
 		
 		return PAGE_ZAMOWIENIE_EDIT;

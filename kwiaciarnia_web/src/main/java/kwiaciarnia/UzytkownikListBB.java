@@ -9,10 +9,7 @@ import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ejb.EJB;
 import jakarta.faces.context.ExternalContext;
-import jakarta.faces.context.FacesContext;
 import jakarta.faces.context.Flash;
-import jakarta.servlet.http.HttpSession;
-
 import kwiaciarnia.dao.UzytkownikDAO;
 import kwiaciarnia.jpa.Uzytkownik;
 
@@ -75,23 +72,14 @@ public class UzytkownikListBB {
 
 	public String newUzytkownik(){
 		Uzytkownik uzytkownik = new Uzytkownik();
-		
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash	
+
 		flash.put("uzytkownik", uzytkownik);
 		
 		return PAGE_UZYTKOWNIK_EDIT;
 	}
 
 	public String editUzytkownik(Uzytkownik uzytkownik){
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash 
+
 		flash.put("uzytkownik", uzytkownik);
 		
 		return PAGE_UZYTKOWNIK_EDIT;

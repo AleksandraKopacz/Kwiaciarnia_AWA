@@ -10,46 +10,45 @@
     <f:viewAction action="#{zamowienieEditBB.onLoadOrder()}" />
 </f:metadata>
 
-<h:head>
-	<meta charset="utf-8"/>
-	<title>Złóż zamówienie</title>
-</h:head>
-
-<h:body style="background-color: #eee; margin: 0.5em;">
-
-	<p:panel toggleable="true" header="Edycja rekordu">
+<ui:composition template="/templates/main-template.xhtml">
 	
-	<h:outputText
-		value="Zalogowany: #{remoteClient.details.idUzytkownik}" />
+	<ui:define name="title">
+		Złóż zamówienie
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<div id="formWrapper">
+			<div class="form">
+				<h1 class="formTitle">Zamów</h1>
 
 		<h:form rendered="#{zamowienieEditBB.zamowienie != null}">
-			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="z-szczegoly" value="szczegoly:" />
+				<p><h:outputLabel for="z-szczegoly" value="Szczegóły zamówienia:" /><br />
 				<p:inputText id="z-szczegoly" value="#{zamowienieEditBB.zamowienie.szczegoly}"
 					required="true" requiredMessage="Podaj szczegóły zamówienia">
 				</p:inputText>
-				<p:message for="z-szczegoly" display="icon"/>
+				<p:message for="z-szczegoly" display="icon"/></p>
 
-				<ui:repeat value="#{zamowienieEditBB.zamowienie.idUzytkownik}">
-					<h:outputLabel for="z-uzytkownik" value="uzytkownik:" />
-						<p:inputText id="z-uzytkownik" value="#{remoteClient.details.idUzytkownik}"
-							required="true" requiredMessage="Podaj ID użytkownika">
+						<ui:repeat value="#{zamowienieEditBB.zamowienie.idUzytkownik = remoteClient.details.idUzytkownik}">
+						<p:inputText id="z-uzytkownik" value="#{zamowienieEditBB.zamowienie.idUzytkownik}"
+							required="true" requiredMessage="Podaj ID użytkownika" type="hidden">
 						</p:inputText>
 					<p:message for="z-uzytkownik" display="icon"/>
 				</ui:repeat>
 
-			</h:panelGrid>
-
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{zamowienieEditBB.order()}"
-				style="margin-right: 1em;" update="@form" />
+			<p:commandButton value="Złóż zamówienie" action="#{zamowienieEditBB.order()}"
+				 update="@form" />
 
 		</h:form>
-<p:linkButton outcome="/pages/user/userEdit" value="index" style="margin-right:20px;" />
-	</p:panel>
-
-</h:body>
+		
+			</div>
+		</div>
+		
+	</ui:define>
+	
+	</ui:composition>
 
 </html>

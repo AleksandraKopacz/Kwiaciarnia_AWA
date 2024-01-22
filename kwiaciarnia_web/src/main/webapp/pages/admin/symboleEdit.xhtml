@@ -5,24 +5,25 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<f:metadata>
+    	<f:viewAction action="#{symboleEditBB.onLoad()}" />
+	</f:metadata>
 
-<f:metadata>
-    <f:viewAction action="#{symboleEditBB.onLoad()}" />
-</f:metadata>
-
-<h:head>
-	<meta charset="utf-8"/>
-	<title>Symbole - edycja</title>
-</h:head>
-
-<h:body style="background-color: #eee; margin: 0.5em;">
+	<ui:composition template="/templates/admin-template.xhtml">
+	
+		<ui:define name="title">
+			Symbole
+		</ui:define>
+		
+		<ui:define name="adminRight">
 
 	<p:panel toggleable="true" header="Edycja rekordu">
 
 		<h:form rendered="#{symboleEditBB.symbole != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="s-symbol" value="symbol:" />
+				<h:outputLabel for="s-symbol" value="Symbol:" />
 				<p:inputText id="s-symbol" value="#{symboleEditBB.symbole.symbol}"
 					required="true" requiredMessage="Podaj nazwę symbolu">
 				</p:inputText>
@@ -39,7 +40,9 @@
 		</h:form>
 
 	</p:panel>
-<p:linkButton outcome="/public/index" value="index" style="margin-right:20px;" />
-</h:body>
+	
+		</ui:define>
+	
+	</ui:composition>
 
 </html>

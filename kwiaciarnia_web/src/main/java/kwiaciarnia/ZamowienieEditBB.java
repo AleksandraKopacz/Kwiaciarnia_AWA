@@ -11,8 +11,6 @@ import jakarta.faces.simplesecurity.RemoteClient;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.servlet.http.HttpSession;
-
 import kwiaciarnia.dao.ZamowienieDAO;
 import kwiaciarnia.jpa.Zamowienie;
 
@@ -51,33 +49,21 @@ public class ZamowienieEditBB implements Serializable {
 	}
 
 	public void onLoad() throws IOException {
-		// 1. load person passed through session
-		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-		// loaded = (Person) session.getAttribute("person");
 
-		// 2. load person passed through flash
 		loaded = (Zamowienie) flash.get("zamowienie");
 
-		// cleaning: attribute received => delete it from session
 		if (loaded != null) {
 			zamowienie = loaded;
-			// session.removeAttribute("person");
+
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
-			// if (!context.isPostback()) { //possible redirect
-			// context.getExternalContext().redirect("personList.xhtml");
-			// context.responseComplete();
-			// }
+
 		}
 
 	}
 	
 	public void onLoadOrder() throws IOException {
-		// 1. load person passed through session
-		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-		// loaded = (Person) session.getAttribute("person");
 
-		// 2. load person passed through flash
 		Zamowienie zamowienie = new Zamowienie();
 	}
 	
@@ -107,6 +93,8 @@ public class ZamowienieEditBB implements Serializable {
 				// existing record
 				zamowienieDAO.merge(zamowienie);
 			}
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Rekord został zapisany", null));
 		} catch (Exception e) {
 			e.printStackTrace();
 			context.addMessage(null,

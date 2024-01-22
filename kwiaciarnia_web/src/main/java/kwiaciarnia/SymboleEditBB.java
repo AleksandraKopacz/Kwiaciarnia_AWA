@@ -40,29 +40,21 @@ public class SymboleEditBB implements Serializable {
 	}
 
 	public void onLoad() throws IOException {
-		// 1. load person passed through session
-		// HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
-		// loaded = (Person) session.getAttribute("person");
 
-		// 2. load person passed through flash
 		loaded = (Symbole) flash.get("symbole");
 
-		// cleaning: attribute received => delete it from session
+
 		if (loaded != null) {
 			symbole = loaded;
-			// session.removeAttribute("person");
+
 		} else {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Błędne użycie systemu", null));
-			// if (!context.isPostback()) { //possible redirect
-			// context.getExternalContext().redirect("personList.xhtml");
-			// context.responseComplete();
-			// }
 		}
 
 	}
 
 	public String saveData() {
-		// no Person object passed
+
 		if (loaded == null) {
 			return PAGE_STAY_AT_THE_SAME;
 		}
@@ -75,6 +67,8 @@ public class SymboleEditBB implements Serializable {
 				// existing record
 				symboleDAO.merge(symbole);
 			}
+			context.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Rekord został zapisany", null));
 		} catch (Exception e) {
 			e.printStackTrace();
 			context.addMessage(null,

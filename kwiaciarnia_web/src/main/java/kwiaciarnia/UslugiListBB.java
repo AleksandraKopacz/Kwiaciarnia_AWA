@@ -127,23 +127,13 @@ public class UslugiListBB {
 
 	public String newUslugi(){
 		Uslugi uslugi = new Uslugi();
-		
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash	
+
 		flash.put("uslugi", uslugi);
 		
 		return PAGE_USLUGI_EDIT;
 	}
 
 	public String editUslugi(Uslugi uslugi){
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash 
 		flash.put("uslugi", uslugi);
 		
 		return PAGE_USLUGI_EDIT;

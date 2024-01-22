@@ -59,7 +59,7 @@ public class ZamowienieDAO {
 		String where = "";
 		String orderby = "order by z.idZamowienie";
 
-		// search for surname
+		// search for params
 		String szczegoly = (String) searchParams.get("szczegoly");
 		if (szczegoly != null) {
 			if (where.isEmpty()) {
@@ -79,8 +79,7 @@ public class ZamowienieDAO {
 			}
 			where += "z.idZamowienie like :idZamowienie ";
 		}
-		
-		// ... other parameters ... 
+
 
 		// 2. Create query object
 		Query query = em.createQuery(select + from + where + orderby);
@@ -94,9 +93,8 @@ public class ZamowienieDAO {
 			query.setParameter("idZamowienie", idZamowienie);
 		}
 
-		// ... other parameters ... 
 
-		// 4. Execute query and retrieve list of Person objects
+		// 4. Execute query and retrieve list of objects
 		try {
 			list = query.getResultList();
 		} catch (Exception e) {

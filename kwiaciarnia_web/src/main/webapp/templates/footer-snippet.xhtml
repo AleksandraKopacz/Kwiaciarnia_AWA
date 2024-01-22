@@ -4,31 +4,30 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
-	<div class="links">
+	<div id="links">
 		<h:form>
-			<div class="store">
+			<div id="store">
 				<h5><b>SKLEP</b></h5>
-				<p:commandLink action="/public/index" value="Strona główna" style="margin-right:2em;" />
-				<p:commandLink action="/public/kwiaty" value="Kwiaty" style="margin-right:2em;" />
-				<p:commandLink action="/public/uslugi" value="Usługi" style="margin-right:2em;" />
-			</div>
-			<div class="account">
-				<h5><b>KONTO</b></h5>
-				<ui:fragment rendered="#{remoteClient.details.rola == 1}">
-					<p:commandLink action="/pages/admin/kwiatyList" value="Panel administratora" style="margin-right:2em;" />
-					<p:commandLink action="#{loginBB.doLogout()}" value="Wyloguj się" style="margin-right:2em;" />
-				</ui:fragment>
-				<ui:fragment rendered="#{remoteClient.details.rola == 0}">
-					<p:commandLink action="/pages/user/zamowienie" value="Złóż zamówienie" style="margin-right:2em;" />
-					<p:commandLink action="#{loginBB.doLogout()}" value="Wyloguj się" style="margin-right:2em;" />
-				</ui:fragment>
-				<ui:fragment rendered="#{remoteClient.details == null}">
-					<p:commandLink action="/public/login" value="Zaloguj się" style="margin-right:2em;" />
-					<p:commandLink action="/public/register" value="Zarejestruj się" style="margin-right:2em;" />
-				</ui:fragment>
+				<ul>
+					<li><p:commandLink action="/public/index" value="Strona główna" style="margin-right:2em;" /></li>
+					<li><p:commandLink action="/public/kwiaty" value="Kwiaty" style="margin-right:2em;" /></li>
+					<li><p:commandLink action="/public/uslugi" value="Usługi" style="margin-right:2em;" /></li>
+					<ui:fragment rendered="#{remoteClient.details.rola == 1}">
+						<li><p:commandLink action="/pages/admin/kwiatyList" value="Panel administratora" style="margin-right:2em;" /></li>
+						<li><p:commandLink action="#{loginBB.doLogout()}" value="Wyloguj się" style="margin-right:2em;" /></li>
+					</ui:fragment>
+					<ui:fragment rendered="#{remoteClient.details.rola == 0}">
+						<li><p:commandLink action="/pages/user/zamowienie" value="Złóż zamówienie" style="margin-right:2em;" /></li>
+						<li><p:commandLink action="#{loginBB.doLogout()}" value="Wyloguj się" style="margin-right:2em;" /></li>
+					</ui:fragment>
+					<ui:fragment rendered="#{remoteClient.details == null}">
+						<li><p:commandLink action="/public/login" value="Zaloguj się" style="margin-right:2em;" /></li>
+						<li><p:commandLink action="/public/register" value="Zarejestruj się" style="margin-right:2em;" /></li>
+					</ui:fragment>
+				</ul>
 			</div>
 		</h:form>
-		<div class="contact">
+		<div id="contact">
 			<h5><b>KWIACIARNIA LAWENDOWE POLE</b></h5>
             <p>Wyszyńskiego 71</p>
             <p>42-600 Tarnowskie Góry</p>
@@ -36,8 +35,8 @@
             <p>lawendowepole@gmail.com</p>
 		</div>
 	</div>
-	<div class="design">
-		<p>Aleksandra Kopacz</p>
+	<div id="design">
+		<p style="margin-right:10px;">Aleksandra Kopacz</p>
 	</div>
 	
 </ui:composition>

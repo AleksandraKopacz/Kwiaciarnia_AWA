@@ -76,9 +76,6 @@ public class SymboleListBB {
 	public String newSymbole(){
 		Symbole symbole = new Symbole();
 		
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
 		
 		//2. Pass object through flash	
 		flash.put("symbole", symbole);
@@ -87,9 +84,6 @@ public class SymboleListBB {
 	}
 
 	public String editSymbole(Symbole symbole){
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
 		
 		//2. Pass object through flash 
 		flash.put("symbole", symbole);

@@ -58,7 +58,7 @@ public class UslugiDAO {
 		String where = "";
 		String orderby = "order by u.idUslugi";
 
-		// search for surname
+		// search for params
 		String usluga = (String) searchParams.get("usluga");
 		if (usluga != null) {
 			if (where.isEmpty()) {
@@ -120,7 +120,6 @@ public class UslugiDAO {
 			}
 		}
 		
-		// ... other parameters ... 
 
 		// 2. Create query object
 		Query query = em.createQuery(select + from + where + orderby);
@@ -148,7 +147,7 @@ public class UslugiDAO {
 
 		// ... other parameters ... 
 
-		// 4. Execute query and retrieve list of Person objects
+		// 4. Execute query and retrieve list of objects
 		try {
 			list = query.getResultList();
 		} catch (Exception e) {

@@ -58,7 +58,7 @@ public class SymboleDAO {
 		String where = "";
 		String orderby = "order by s.idSymbole";
 
-		// search for surname
+		// search for params
 		String symbol = (String) searchParams.get("symbol");
 		if (symbol != null) {
 			if (where.isEmpty()) {
@@ -79,7 +79,6 @@ public class SymboleDAO {
 			where += "s.idSymbole like :idSymbole ";
 		}
 		
-		// ... other parameters ... 
 
 		// 2. Create query object
 		Query query = em.createQuery(select + from + where + orderby);
@@ -93,9 +92,8 @@ public class SymboleDAO {
 			query.setParameter("idSymbole", idSymbole);
 		}
 
-		// ... other parameters ... 
 
-		// 4. Execute query and retrieve list of Person objects
+		// 4. Execute query and retrieve list of objects
 		try {
 			list = query.getResultList();
 		} catch (Exception e) {

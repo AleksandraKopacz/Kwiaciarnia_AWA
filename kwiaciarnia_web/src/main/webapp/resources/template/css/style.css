@@ -1,0 +1,198 @@
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
+@import url('https://fonts.googleapis.com/css2?family=Playball&family=Questrial&display=swap');
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	margin: 0;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* HEADER */
+
+#header {
+	width: 100%;
+	height: 20%;
+	background-color: #ede6f3;
+	padding-bottom: 1em;
+	padding-top: 1em;
+}
+
+.logoImg {
+	max-width: 100%;
+	height: 2em;
+}
+
+
+/* FOOTER */
+
+#footer {
+	width: 100%;
+	height: 40%;
+	margin-top: 0;
+}
+
+#links {
+	background-color: #dccee7;
+	overflow: hidden;
+	margin-top: 0;
+}
+
+#design {
+	text-align: right;
+	background-color: #cab6dc;
+	margin: -20px 0 10px 0;
+}
+
+#store {
+	float: left;
+	width: 49%;
+	margin-left: 10px;
+}
+
+#contact {
+	float: right;
+	width: 50%;
+}
+
+/* INDEX */
+
+#imageIndex {
+	background-image: url("https://www.contemporaryartbychristine.com/cdn/shop/products/Abstract-Landscape-Painting-Original-art-lavender-flowers-Scottish-Highlands-Heather-river-textured-palette-knife-floral-trees-blue-purple-sage-green-white-modern-canvas-wall-art-home_6f12d83b-4a9b-453f-b1c6-5a4096e26439_1200x1200.jpg?v=1625490761");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: #d3c2e2;
+	width: 100%;
+	height: 20em;
+	position: relative;
+	color: white;
+	text-shadow: #af93ca 1px 0 10px;
+	font-family: 'Playball', cursive;
+}
+
+.child {
+	width: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -5em 0 0 -16em;
+}
+
+#description {
+	width: 100%;
+	margin-top: 0;
+}
+
+#orderDescription {
+	width: 100%;
+	background-color: #e4daed;
+	overflow: hidden;
+	margin-top: 0;
+}
+
+.child2 {
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+}
+
+#descLeft {
+	float: left;
+	width: 49%;
+	margin-left: 10px;
+}
+
+#descRight {
+	float: right;
+	width: 49%;
+	margin-right: 10px;
+}
+
+
+/* FORM */
+
+.form {
+	text-align: center;
+}
+
+#formWrapper {
+	margin-top: 10em;
+	margin-bottom: 10em;
+}
+
+.formTitle {
+	text-shadow: #af93ca 1px 0 10px;
+	font-family: 'Playball', cursive;
+}
+
+.formInput {
+	border-radius: 0;
+	border: 1px solid #d3c2e2;
+	padding: 10px 10px;
+	width: 15%;
+}
+
+.formButton {
+	background-color: #af93ca;
+  	border: none;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+}
+
+/* ADMIN */
+
+#adminWrapper {
+	display: flex;
+	background-color: #ffffff;
+	margin-top: 0;
+}
+
+#adminLeft {
+	float: left;
+	width: 10%;
+	background-color: #e4daed;
+	padding: 1em;
+}
+
+#adminRight {
+	float: right;
+	width: 89%;
+  	padding: 1em;
+}
+
+#loginDetails {
+	background-color: #dccee7;
+	margin-top: 0;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.adminLinks {
+	line-height: 2;
+	text-align: center;
+	margin-top: 1em;
+}
+
+/* STORE */
+
+.storeImg {
+	width: auto;
+  	height: 13em;
+}
+
+.filter {
+	text-align: center;
+}
+
+#storeWrapper {
+	padding-top: 1em;
+}

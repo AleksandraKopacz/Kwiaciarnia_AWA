@@ -6,66 +6,71 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:head>
-	<meta charset="utf-8" />
-	<title>Symbole</title>
-</h:head>
-<h:body style="background-color: #eee; margin: 0.5em;">
-
-	<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
-		style="margin-bottom: 1em;">
-		<h:form>
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel value="idSymbole:" />
-				<p:inputText value="#{symboleListBB.idSymbole}" placeholder="0" />
-				<h:outputLabel value="symbol:" />
-				<p:inputText value="#{symboleListBB.symbol}" />
-				<p:commandButton value="Szukaj" update="form-table" />
-			</h:panelGrid>
-		</h:form>
-	</p:panel>
-
-	<p:messages />
-
-	<h:form id="form-table" style="margin-bottom:1em;">
-
-		<p:commandButton value="Dodaj nowy rekord"
-			action="#{symboleListBB.newSymbole()}" style="margin-bottom:1em;" />
-
-		<p:dataTable value="#{symboleListBB.list}" var="s" rows="5"
-                     paginator="true" paginatorPosition="both"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords} rekordów"
-                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}">
+	<ui:composition template="/templates/admin-template.xhtml">
+	
+		<ui:define name="title">
+			Symbole
+		</ui:define>
 		
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="idSymbole" />
-				</f:facet>
-				<h:outputText value="#{s.idSymbole}" />
-			</p:column>
+		<ui:define name="adminRight">
 
-			<p:column priority="5">
-				<f:facet name="header">
-					<h:outputText value="symbol" />
-				</f:facet>
-				<h:outputText value="#{s.symbol}" />
-			</p:column>
+			<p:panel header="Opcje wyszukiwania" toggleable="true" collapsed="true"
+				style="margin-bottom: 1em;">
+				<h:form>
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel value="idSymbole:" />
+						<p:inputText value="#{symboleListBB.idSymbole}" placeholder="0" />
+						<h:outputLabel value="symbol:" />
+						<p:inputText value="#{symboleListBB.symbol}" />
+						<p:commandButton value="Szukaj" update="form-table" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+		
+			<p:messages />
+		
+			<h:form id="form-table" style="margin-bottom:1em;">
+		
+				<p:commandButton value="Dodaj nowy rekord"
+					action="#{symboleListBB.newSymbole()}" style="margin-bottom:1em;" />
+		
+				<p:dataTable value="#{symboleListBB.list}" var="s" rows="5"
+		                     paginator="true" paginatorPosition="both"
+		                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		                     currentPageReportTemplate="{startRecord}-{endRecord} z {totalRecords} rekordów"
+		                     rowsPerPageTemplate="5,10,{ShowAll|'Wszystko'}">
+				
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="idSymbole" />
+						</f:facet>
+						<h:outputText value="#{s.idSymbole}" />
+					</p:column>
+		
+					<p:column priority="5">
+						<f:facet name="header">
+							<h:outputText value="symbol" />
+						</f:facet>
+						<h:outputText value="#{s.symbol}" />
+					</p:column>
+		
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="opcje" />
+						</f:facet>
+		
+						<p:commandButton value="Edytuj"
+							action="#{symboleListBB.editSymbole(s)}" />
+		
+						<p:commandButton value="Usuń"
+							action="#{symboleListBB.deleteSymbole(s)}" update="@form" />
+					</p:column>
+		
+				</p:dataTable>
+			</h:form>
+			
+		</ui:define>
+	
+	</ui:composition>
 
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="opcje" />
-				</f:facet>
-
-				<p:commandButton value="Edytuj"
-					action="#{symboleListBB.editSymbole(s)}" />
-
-				<p:commandButton value="Usuń"
-					action="#{symboleListBB.deleteSymbole(s)}" update="@form" />
-			</p:column>
-
-		</p:dataTable>
-	</h:form>
-<p:linkButton outcome="/public/index" value="index" style="margin-right:20px;" />
-</h:body>
 </html>

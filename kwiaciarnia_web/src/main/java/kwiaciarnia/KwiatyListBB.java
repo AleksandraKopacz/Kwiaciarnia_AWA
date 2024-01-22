@@ -123,22 +123,13 @@ public class KwiatyListBB {
 	public String newKwiaty(){
 		Kwiaty kwiaty = new Kwiaty();
 		
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash	
 		flash.put("kwiaty", kwiaty);
 		
 		return PAGE_KWIATY_EDIT;
 	}
 
 	public String editKwiaty(Kwiaty kwiaty){
-		//1. Pass object through session
-		//HttpSession session = (HttpSession) extcontext.getSession(true);
-		//session.setAttribute("person", person);
-		
-		//2. Pass object through flash 
+
 		flash.put("kwiaty", kwiaty);
 		
 		return PAGE_KWIATY_EDIT;

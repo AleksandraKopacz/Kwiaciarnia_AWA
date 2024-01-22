@@ -7,35 +7,49 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
 	<h:head>
+		<h:outputStylesheet name="css/theme.css" library="template" />
+		<h:outputStylesheet name="css/style.css" library="template" />
 		<title><ui:insert name="title">...</ui:insert></title>
 		<link type="image/x-icon" rel="shortcut icon"
-		href="#{resource['template:img/logo.ico']}" />
+		href="#{resource['template:img/icon.png']}" />
 	</h:head>
 	
 	<h:body>
 		<div id="page_wrapper">
+		
 			<ui:insert name="header">
 				<div id="header">
 					<ui:include src="/templates/header-snippet.xhtml" />
 				</div>
 			</ui:insert>
-			<div id="adminLeft">
-				<ul class="adminLinks">
-					<li><p:commandLink action="/pages/admin/kwiatyList" value="Kwiaty" /></li>
-					<li><p:commandLink action="/pages/admin/symboleList" value="Symbole" /></li>
-					<li><p:commandLink action="/pages/admin/uslugiList" value="Usługi" /></li>
-					<li><p:commandLink action="/pages/admin/uzytkownikList" value="Użytkownik" /></li>
-					<li><p:commandLink action="/pages/admin/zamowienieList" value="Zamówienie" /></li>
-				</ul>
+
+			<div id="loginDetails">
+				<p><h:outputText style="margin-left:10px;" value="Zalogowano jako: #{remoteClient.details.email}" /></p>
 			</div>
-			<div id="adminRight">
-				<ui:insert name="adminRight"></ui:insert>
+			
+			<div id="adminWrapper">
+				<div id="adminLeft">
+					<h2 style="text-align:center;">Menu</h2>
+					<ul class="adminLinks">
+						<li><p:commandLink action="/pages/admin/kwiatyList" value="Kwiaty" /></li>
+						<li><p:commandLink action="/pages/admin/symboleList" value="Symbole" /></li>
+						<li><p:commandLink action="/pages/admin/uslugiList" value="Usługi" /></li>
+						<li><p:commandLink action="/pages/admin/uzytkownikList" value="Użytkownik" /></li>
+						<li><p:commandLink action="/pages/admin/zamowienieList" value="Zamówienie" /></li>
+					</ul>
+				</div>
+				
+				<div id="adminRight">
+					<ui:insert name="adminRight"></ui:insert>
+				</div>
 			</div>
+			
 			<ui:insert name="footer">
 				<div id="footer">
 					<ui:include src="/templates/footer-snippet.xhtml" />
 				</div>
 			</ui:insert>
+			
 		</div>
 	</h:body>
 	

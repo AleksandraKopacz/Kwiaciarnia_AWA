@@ -4,24 +4,25 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	
-	<h:form>
-		<p:commandLink action="/public/index" style="margin-right:2em;">
-			<h:graphicImage name="img/logo.png" library="template" />
-		</p:commandLink>
-		<p:commandLink action="/public/kwiaty" value="Kwiaty" style="margin-right:2em;" />
-		<p:commandLink action="/public/uslugi" value="Usługi" style="margin-right:2em;" />
-		<ui:fragment rendered="#{remoteClient.details.rola == 1}">
-			<p:commandLink action="/pages/admin/kwiatyList" value="Panel administratora" style="margin-right:2em;" />
-			<p:commandLink action="#{loginBB.doLogout()}" value="Wyloguj się" style="margin-right:2em;" />
-		</ui:fragment>
-		<ui:fragment rendered="#{remoteClient.details.rola == 0}">
-			<p:commandLink action="/pages/user/zamowienie" value="Złóż zamówienie" style="margin-right:2em;" />
-			<p:commandLink action="#{loginBB.doLogout()}" value="Wyloguj się" style="margin-right:2em;" />
-		</ui:fragment>
-		<ui:fragment rendered="#{remoteClient.details == null}">
-			<p:commandLink action="/public/login" value="Zaloguj się" style="margin-right:2em;" />
-			<p:commandLink action="/public/register" value="Zarejestruj się" style="margin-right:2em;" />
-		</ui:fragment>
-	</h:form>
+			<h:form>
+				<p:commandLink action="/public/index" style="margin-right:2em;">
+					<h:graphicImage class="logoImg" name="img/icon.png" library="template" style="margin-left:2em;" />
+				</p:commandLink>
+				<p:commandLink action="/public/index" value="Strona główna" style="margin-right:2em;" class="menu" />
+				<p:commandLink action="/public/kwiaty" value="Kwiaty" style="margin-right:2em;" class="menu" />
+				<p:commandLink action="/public/uslugi" value="Usługi" style="margin-right:2em;" class="menu" />
+				<ui:fragment rendered="#{remoteClient.details.rola == 1}">
+					<p:commandLink action="/pages/admin/kwiatyList" value="Panel administratora" style="margin-right:2em;" class="menu" />
+					<p:commandLink action="#{loginBB.doLogout()}" value="Wyloguj się" style="margin-right:2em;" class="menu" />
+				</ui:fragment>
+				<ui:fragment rendered="#{remoteClient.details.rola == 0}">
+					<p:commandLink action="/pages/user/zamowienie" value="Złóż zamówienie" style="margin-right:2em;" class="menu" />
+					<p:commandLink action="#{loginBB.doLogout()}" value="Wyloguj się" style="margin-right:2em;" class="menu" />
+				</ui:fragment>
+				<ui:fragment rendered="#{remoteClient.details == null}">
+					<p:commandLink action="/public/login" value="Zaloguj się" style="margin-right:2em;" class="menu" />
+					<p:commandLink action="/public/register" value="Zarejestruj się" style="margin-right:2em;" class="menu" />
+				</ui:fragment>
+		</h:form>
 	
 </ui:composition>

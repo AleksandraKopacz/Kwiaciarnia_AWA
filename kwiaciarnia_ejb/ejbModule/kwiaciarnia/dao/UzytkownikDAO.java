@@ -59,7 +59,7 @@ public class UzytkownikDAO {
 		String where = "";
 		String orderby = "order by uz.idUzytkownik";
 
-		// search for surname
+		// search for params
 		String email = (String) searchParams.get("email");
 		if (email != null) {
 			if (where.isEmpty()) {
@@ -69,18 +69,7 @@ public class UzytkownikDAO {
 			}
 			where += "uz.email like :email ";
 		}
-		
-		byte rola = (byte) searchParams.get("rola");
-		if (rola != 2) {
-			if (where.isEmpty()) {
-				where = "where ";
-			} else {
-				where += "and ";
-			}
-			where += "uz.rola like :rola ";
-		}
-		
-		// ... other parameters ... 
+
 
 		// 2. Create query object
 		Query query = em.createQuery(select + from + where + orderby);
@@ -89,14 +78,8 @@ public class UzytkownikDAO {
 		if (email != null) {
 			query.setParameter("email", email+"%");
 		}
-		
-		if (rola != 2) {
-			query.setParameter("rola", rola);
-		}
 
-		// ... other parameters ... 
-
-		// 4. Execute query and retrieve list of Person objects
+		// 4. Execute query and retrieve list of params
 		try {
 			list = query.getResultList();
 		} catch (Exception e) {
